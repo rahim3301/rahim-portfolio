@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- Temporary template used once to generate public/og.png — safe to delete -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #og {
+        width: 1200px;
+        height: 630px;
+        position: relative;
+        overflow: hidden;
+        background: #08040f;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        align-items: center;
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(183, 149, 248, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(183, 149, 248, 0.07) 1px, transparent 1px);
+        background-size: 56px 56px;
+      }
+      .blob1 {
+        position: absolute;
+        width: 550px;
+        height: 550px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.35);
+        filter: blur(110px);
+        top: -180px;
+        left: -120px;
+      }
+      .blob2 {
+        position: absolute;
+        width: 480px;
+        height: 480px;
+        border-radius: 50%;
+        background: rgba(232, 121, 249, 0.22);
+        filter: blur(110px);
+        bottom: -180px;
+        right: -80px;
+      }
+      .content {
+        position: relative;
+        padding-left: 84px;
+        max-width: 700px;
+      }
+      .badge {
+        display: inline-block;
+        border: 1px solid rgba(183, 149, 248, 0.4);
+        background: rgba(139, 92, 246, 0.12);
+        color: #d0b8fd;
+        border-radius: 999px;
+        padding: 10px 26px;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 92px;
+        line-height: 1.02;
+        color: #fff;
+        margin-top: 28px;
+        font-weight: 700;
+      }
+      h1 .grad {
+        background: linear-gradient(120deg, #a078f0, #d0b8fd, #e879f9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        margin-top: 26px;
+        font-size: 30px;
+        color: #94a3b8;
+        line-height: 1.45;
+      }
+      p b {
+        color: #d0b8fd;
+        font-weight: 600;
+      }
+      .portrait-wrap {
+        position: absolute;
+        right: 84px;
+        top: 50%;
+        transform: translateY(-50%) rotate(3deg);
+        width: 330px;
+        height: 415px;
+        border-radius: 42px;
+        padding: 3px;
+        background: linear-gradient(135deg, #a078f0, #e879f9, #7dd3fc);
+        box-shadow: 0 0 90px rgba(139, 92, 246, 0.55);
+      }
+      .portrait-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 40px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="og">
+      <div class="grid"></div>
+      <div class="blob1"></div>
+      <div class="blob2"></div>
+      <div class="content">
+        <span class="badge">✦ Director @ Offroad Interactive</span>
+        <h1>Rahim <span class="grad">Khan</span></h1>
+        <p>
+          <b>Unity Game Developer</b> &amp; Studio Director<br />7+ games
+          published on Google Play
+        </p>
+      </div>
+      <div class="portrait-wrap"><img src="/me.png" /></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Purple palette on black */
+  --color-lilac-50: #faf7ff;
+  --color-lilac-100: #f3ecff;
+  --color-lilac-200: #e5d8ff;
+  --color-lilac-300: #d0b8fd;
+  --color-lilac-400: #b795f8;
+  --color-lilac-500: #a078f0;
+  --color-lilac-600: #8b5cf6;
+  --color-lilac-700: #7c3aed;
+  --color-lilac-800: #5b21b6;
+  --color-lilac-900: #3b1a78;
+
+  /* Dark base */
+  --color-night-950: #08040f;
+  --color-night-900: #0d0716;
+  --color-night-800: #150d24;
+  --color-night-700: #1e1233;
+
+  /* Gradient companions */
+  --color-blush: #e879f9;
+  --color-skysoft: #7dd3fc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-night-950 font-sans text-slate-300 antialiased;
+  overflow-x: hidden;
+}
+
+/* Hide native cursor on precise pointers — replaced by custom cursor */
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+::selection {
+  @apply bg-lilac-600 text-white;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(120deg, #a078f0 0%, #d0b8fd 45%, #e879f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Dark frosted glass surface */
+.glass {
+  background: rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(183, 149, 248, 0.18);
+}
+
+/* Purple glow */
+.glow {
+  box-shadow:
+    0 0 24px rgba(139, 92, 246, 0.35),
+    0 0 80px rgba(139, 92, 246, 0.12);
+}
+
+/* Soft glowing blob backgrounds (pure CSS, used behind sections) */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Subtle grid overlay for a techy feel */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(183, 149, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 149, 248, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Rotating conic-gradient border (used to spotlight the studio card) */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animated-border {
+  border-radius: 3.1rem;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle),
+    rgba(160, 120, 240, 0.9),
+    rgba(232, 121, 249, 0.55),
+    rgba(125, 211, 252, 0.45),
+    rgba(160, 120, 240, 0.9)
+  );
+  animation: rotate-angle 6s linear infinite;
+}
