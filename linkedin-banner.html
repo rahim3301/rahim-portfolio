@@ -1,0 +1,150 @@
+<!doctype html>
+<!-- Temporary template used to generate linkedin-banner.png — safe to delete -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #banner {
+        width: 1584px;
+        height: 396px;
+        position: relative;
+        overflow: hidden;
+        background: #08040f;
+        font-family: "Inter", sans-serif;
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(183, 149, 248, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(183, 149, 248, 0.06) 1px, transparent 1px);
+        background-size: 52px 52px;
+      }
+      .blob1 {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.32);
+        filter: blur(100px);
+        top: -220px;
+        right: 220px;
+      }
+      .blob2 {
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border-radius: 50%;
+        background: rgba(232, 121, 249, 0.2);
+        filter: blur(100px);
+        bottom: -200px;
+        right: -60px;
+      }
+      /* Content shifted right — LinkedIn's avatar covers the bottom-left */
+      .content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 560px;
+        right: 380px;
+      }
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 54px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 1.1;
+      }
+      h1 .grad {
+        background: linear-gradient(120deg, #a078f0, #d0b8fd, #e879f9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        margin-top: 16px;
+        font-size: 24px;
+        color: #94a3b8;
+        font-weight: 500;
+      }
+      p b {
+        color: #d0b8fd;
+        font-weight: 600;
+      }
+      .chips {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+      }
+      .chip {
+        border: 1px solid rgba(183, 149, 248, 0.35);
+        background: rgba(139, 92, 246, 0.12);
+        color: #d0b8fd;
+        border-radius: 999px;
+        padding: 8px 20px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+      .icons {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: grid;
+        grid-template-columns: repeat(2, 110px);
+        gap: 16px;
+      }
+      .icons img {
+        width: 110px;
+        height: 110px;
+        border-radius: 26px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      }
+      .url {
+        position: absolute;
+        right: 70px;
+        bottom: 24px;
+        color: #a078f0;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="banner">
+      <div class="grid"></div>
+      <div class="blob1"></div>
+      <div class="blob2"></div>
+      <div class="content">
+        <h1>Building games <span class="grad">players love</span></h1>
+        <p>
+          <b>Unity Game Developer</b> · Founder &amp; Director @ Offroad
+          Interactive
+        </p>
+        <div class="chips">
+          <span class="chip">🎮 7+ Published Games</span>
+          <span class="chip">📱 Google Play</span>
+          <span class="chip">✦ Original IPs</span>
+        </div>
+      </div>
+      <div class="icons">
+        <img src="/games/western-hero.png" />
+        <img src="/games/island-survival.png" />
+        <img src="/games/bus-simulator.png" />
+        <img src="/studio/superhero-maker-3d.webp" />
+      </div>
+      <div class="url">rahim-portfolio-sigma.vercel.app</div>
+    </div>
+  </body>
+</html>

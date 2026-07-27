@@ -16,15 +16,8 @@ export const site = {
     instagram: "https://www.instagram.com/ra_him3/",
     youtube: "https://www.youtube.com/@ra_him33",
   },
-  /**
-   * Contact form delivery (Web3Forms).
-   * TODO (Rahim): get your free access key:
-   *   1. Go to https://web3forms.com
-   *   2. Enter ar480014@gmail.com → "Create Access Key"
-   *   3. Copy the key from your email and paste it below
-   * Until then the form falls back to opening the visitor's mail app.
-   */
-  web3formsKey: "PASTE_YOUR_ACCESS_KEY_HERE",
+  /** Contact form delivery (Web3Forms) — messages go straight to ar480014@gmail.com */
+  web3formsKey: "b56875be-cd87-40db-8fb8-8100d6aa7222",
 };
 
 export const skills = [
