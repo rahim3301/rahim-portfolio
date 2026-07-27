@@ -1,4 +1,5 @@
 import Reveal from "../Reveal";
+import ContactForm from "../ContactForm";
 import { site } from "../../data/site";
 
 const socials = [
@@ -28,21 +29,20 @@ export default function Contact() {
           </p>
         </Reveal>
 
+        <Reveal delay={0.15} className="mt-10">
+          <ContactForm />
+        </Reveal>
+
         <Reveal
-          delay={0.15}
-          className="mt-9 flex flex-wrap items-center justify-center gap-4"
+          delay={0.2}
+          className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-slate-400"
         >
+          <span>Prefer email?</span>
           <a
             href={`mailto:${site.email}`}
-            className="glow rounded-full bg-lilac-600 px-8 py-4 font-semibold text-white transition-transform hover:scale-105"
+            className="font-semibold text-lilac-300 hover:underline"
           >
             {site.email}
-          </a>
-          <a
-            href={`mailto:${site.email}?subject=CV%20Request%20—%20Rahim%20Khan&body=Hi%20Rahim,%20I'd%20love%20a%20copy%20of%20your%20latest%20CV.`}
-            className="glass rounded-full px-8 py-4 font-semibold text-lilac-200 transition-transform hover:scale-105"
-          >
-            Request CV
           </a>
         </Reveal>
 

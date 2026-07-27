@@ -16,8 +16,15 @@ export const site = {
     instagram: "https://www.instagram.com/ra_him3/",
     youtube: "https://www.youtube.com/@ra_him33",
   },
-  /** TODO (Rahim): drop your CV at /public/resume.pdf to activate the download button */
-  resumeUrl: "/resume.pdf",
+  /**
+   * Contact form delivery (Web3Forms).
+   * TODO (Rahim): get your free access key:
+   *   1. Go to https://web3forms.com
+   *   2. Enter ar480014@gmail.com → "Create Access Key"
+   *   3. Copy the key from your email and paste it below
+   * Until then the form falls back to opening the visitor's mail app.
+   */
+  web3formsKey: "PASTE_YOUR_ACCESS_KEY_HERE",
 };
 
 export const skills = [
