@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { site } from "../data/site";
 
 const links = [
+  { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
-  { label: "Games", href: "#games" },
   { label: "Studio", href: "#studio" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },

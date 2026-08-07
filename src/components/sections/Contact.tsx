@@ -4,6 +4,7 @@ import { site } from "../../data/site";
 
 const socials = [
   { label: "LinkedIn", href: site.socials.linkedin },
+  { label: "GitHub", href: site.socials.github },
   { label: "Instagram", href: site.socials.instagram },
   { label: "YouTube", href: site.socials.youtube },
 ];
@@ -24,8 +25,12 @@ export default function Contact() {
             <span className="text-gradient">players love</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-slate-400">
-            Whether you want to publish a game, partner with my studio, or just
-            talk game dev — my inbox is open.
+            Whether you’re hiring a remote Unity developer, want to partner with
+            my studio, or just talk game dev — my inbox is open.
+          </p>
+          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-semibold text-green-300">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+            {site.availability}
           </p>
         </Reveal>
 

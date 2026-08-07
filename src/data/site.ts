@@ -1,9 +1,10 @@
 export const site = {
   name: "Abdul Rahim Khan",
   shortName: "Rahim Khan",
-  role: "Game Developer & Studio Director",
+  role: "Unity Game Developer & Studio Director",
+  availability: "Open to Remote Unity Developer Opportunities",
   tagline:
-    "I build mobile games players love — from hyper-casual to FPS — and lead Offroad Interactive, a game studio crafting original titles.",
+    "I build gameplay systems, mechanics and production-ready experiences in Unity — from hypercasual mobile games to action and adventure projects.",
   email: "ar480014@gmail.com",
   location: "Lahore, Pakistan",
   studio: {
@@ -13,6 +14,7 @@ export const site = {
   },
   socials: {
     linkedin: "https://www.linkedin.com/in/rahim-khan3301/",
+    github: "https://github.com/rahim3301",
     instagram: "https://www.instagram.com/ra_him3/",
     youtube: "https://www.youtube.com/@ra_him33",
   },
@@ -20,24 +22,45 @@ export const site = {
   web3formsKey: "b56875be-cd87-40db-8fb8-8100d6aa7222",
 };
 
-export const skills = [
-  { name: "Unity 3D", level: "Expert" },
-  { name: "C#", level: "Expert" },
-  { name: "Game Design", level: "Advanced" },
-  { name: "Gameplay Programming", level: "Advanced" },
-  { name: "Mobile Optimization", level: "Advanced" },
-  { name: "UI / UX for Games", level: "Advanced" },
-  { name: "Play Store Publishing", level: "Advanced" },
-  { name: "Ads & Monetization", level: "Intermediate" },
-  { name: "Firebase", level: "Intermediate" },
-  { name: "Git / Version Control", level: "Advanced" },
-  { name: "Level Design", level: "Advanced" },
-  { name: "Team Leadership", level: "Advanced" },
+export const skillGroups = [
+  {
+    title: "Game Development",
+    skills: [
+      "Unity",
+      "C#",
+      "Gameplay Programming",
+      "Game Systems",
+      "2D / 3D Development",
+      "Mobile Game Development",
+    ],
+  },
+  {
+    title: "Unity Technologies",
+    skills: [
+      "URP",
+      "Cinemachine",
+      "Addressables",
+      "Unity Services",
+      "Input System",
+      "Editor Tools",
+      "ProBuilder",
+    ],
+  },
+  {
+    title: "Production",
+    skills: [
+      "Android Builds",
+      "Google Play Deployment",
+      "Git / Version Control",
+      "Performance Optimization",
+      "Ads & Monetization",
+    ],
+  },
 ];
 
 export const stats = [
   { value: "10+", label: "Games worked on" },
-  { value: "3+", label: "Years in game dev" },
+  { value: "3", label: "Years professional Unity" },
   { value: "1", label: "Studio founded" },
   { value: "MSc", label: "Master’s in IT" },
 ];

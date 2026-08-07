@@ -1,13 +1,22 @@
 /**
- * ── YOUR GAMES ─────────────────────────────────────────────
- * Every published game rendered by the site. Icons live in
- * /public/games/ (pulled from each Play Store listing).
+ * ── PROJECTS ───────────────────────────────────────────────
+ * Structured project data — adding a new game is just adding
+ * an entry here. Icons live in /public/games/ and /public/studio/.
+ *
+ * TODO (Rahim): refine the `role` bullets per project with your
+ * exact contributions (e.g. "player controller", "level system",
+ * "Addressables pipeline"). Keep them accurate — never invent.
  */
 
-export type Game = {
+export type Project = {
   title: string;
-  genre: string;
+  category: string;
   description: string;
+  /** What I personally worked on — keep accurate */
+  role: string[];
+  tech: string[];
+  status: "Published" | "In Development";
+  featured: boolean;
   playStoreUrl: string;
   icon: string;
   downloads?: string;
@@ -15,12 +24,16 @@ export type Game = {
   gradient: string;
 };
 
-export const games: Game[] = [
+export const projects: Project[] = [
   {
     title: "Western Hero: Offline Shooter",
-    genre: "Action",
+    category: "Action · Mobile · 3D",
     description:
-      "Portrait Wild-West shooter with story missions, boss fights across 4 maps, a full weapon arsenal — playable completely offline.",
+      "Portrait Wild-West shooter with story missions, boss fights across 4 maps and a full weapon arsenal — playable completely offline.",
+    role: ["Gameplay programming", "Game systems", "Unity implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.turbotaxstudio.shooter.western.war.games.cover.survival",
     icon: "/games/western-hero.png",
@@ -29,21 +42,34 @@ export const games: Game[] = [
     gradient: "from-lilac-600 via-lilac-800 to-night-900",
   },
   {
-    title: "Bus Simulator 3D Driving",
-    genre: "Simulation",
+    title: "Dubai Offroad: Desert Racing",
+    category: "Racing · Mobile · 3D",
     description:
-      "Open-world bus driving with career, racing, off-road and chase modes — real physics, passengers, traffic AI and dynamic hazards.",
+      "Desert rally racing across Dubai dunes — 4x4 trucks, upgrades and offroad physics. An original title built at my studio.",
+    role: [
+      "Game design & production",
+      "Unity development",
+      "Play Store release",
+    ],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
     playStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.tbs.driving.bus.games.coach.simulatorworld.fundrive",
-    icon: "/games/bus-simulator.png",
-    downloads: "5K+",
-    gradient: "from-skysoft/40 via-lilac-700 to-night-900",
+      "https://play.google.com/store/apps/details?id=com.offroadstudios.dubaioffroad",
+    icon: "/studio/dubai-offroad.webp",
+    downloads: "1K+",
+    rating: "5.0",
+    gradient: "from-blush/40 via-lilac-700 to-night-900",
   },
   {
     title: "Island Survival: Open World",
-    genre: "Adventure",
+    category: "Adventure · Open World · 3D",
     description:
       "Toon-style open-world survival — craft gear, battle T-Rexes and jungle guardians, and climb the Giant Mountain for legendary treasure.",
+    role: ["Gameplay programming", "Game systems", "Unity implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.turbotax.peaksurvial.treasure.hunt.craft.peakgames",
     icon: "/games/island-survival.png",
@@ -51,20 +77,18 @@ export const games: Game[] = [
     gradient: "from-blush/40 via-lilac-700 to-night-900",
   },
   {
-    title: "Mini Relaxing Games Fidget Toy",
-    genre: "Casual",
-    description:
-      "A satisfying collection of ASMR antistress mini games — pop-its, slime, hydraulic press, fruit slicing and dozens more relaxing toys.",
-    playStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.turbotaxstudio.mini.games.relaxing.antistress",
-    icon: "/games/mini-relaxing.png",
-    gradient: "from-lilac-500 via-lilac-800 to-night-900",
-  },
-  {
     title: "Crazy Bank Office Slap Game",
-    genre: "Casual",
+    category: "Casual · Physics · Mobile",
     description:
       "Hilarious office-chaos simulator — tap, throw and slap your way through a lively bank office packed with interactive objects.",
+    role: [
+      "Gameplay programming",
+      "Interactive object systems",
+      "Unity implementation",
+    ],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.hms.crazy.bank.office.splash.kick.smash.games",
     icon: "/games/crazy-bank.png",
@@ -73,23 +97,84 @@ export const games: Game[] = [
   },
   {
     title: "Run Solve Survive Task",
-    genre: "Adventure",
+    category: "Runner · Survival · 3D",
     description:
       "Fast-paced block-world survival runner — dodge lasers, meteors and chasing enemies across multiple hardcore challenge modes.",
+    role: [
+      "Gameplay programming",
+      "Challenge mode systems",
+      "Unity implementation",
+    ],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.hms.run.solve.survive.tasks",
     icon: "/games/run-solve.png",
     gradient: "from-skysoft/30 via-lilac-800 to-night-900",
   },
   {
-    title: "Rescue Climb: Save Girl Friend",
-    genre: "Adventure",
+    title: "Bus Simulator 3D Driving",
+    category: "Simulation · Mobile",
     description:
-      "A heartfelt 3D parkour adventure — climb floating platforms and scenic cliffs on an emotional mission to rescue your lost companion.",
+      "Open-world bus driving with career, racing, off-road and chase modes — real physics, passengers and traffic AI.",
+    role: ["Gameplay updates", "Bug fixing", "Feature enhancements"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: false,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.tbs.driving.bus.games.coach.simulatorworld.fundrive",
+    icon: "/games/bus-simulator.png",
+    downloads: "5K+",
+    gradient: "from-skysoft/40 via-lilac-700 to-night-900",
+  },
+  {
+    title: "Mini Relaxing Games Fidget Toy",
+    category: "Casual · Hypercasual",
+    description:
+      "A satisfying collection of ASMR antistress mini games — pop-its, slime, hydraulic press and dozens more relaxing toys.",
+    role: ["Mini-game development", "Unity implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: false,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.turbotaxstudio.mini.games.relaxing.antistress",
+    icon: "/games/mini-relaxing.png",
+    gradient: "from-lilac-500 via-lilac-800 to-night-900",
+  },
+  {
+    title: "Rescue Climb: Save Girl Friend",
+    category: "Adventure · Parkour · 3D",
+    description:
+      "A heartfelt 3D parkour adventure — climb floating platforms and scenic cliffs on a mission to rescue your lost companion.",
+    role: ["Gameplay programming", "Level implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: false,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.hmd.rescue.climb.games",
     icon: "/games/rescue-climb.png",
     gradient: "from-blush/30 via-lilac-800 to-night-900",
+  },
+];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const moreProjects = projects.filter((p) => !p.featured);
+
+/** Independent projects currently in progress */
+export type IndieProject = {
+  title: string;
+  status: string;
+  description: string;
+};
+
+export const indieProjects: IndieProject[] = [
+  {
+    title: "Mystic Adventure",
+    status: "In Development",
+    // TODO (Rahim): add a 1-2 sentence concept description
+    description:
+      "Independent game project currently in development — details coming soon.",
   },
 ];
 

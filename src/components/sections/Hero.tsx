@@ -77,29 +77,38 @@ export default function Hero() {
           transition={{ duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="max-w-xl"
         >
-          <a
-            href="#studio"
-            className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-lilac-200 transition-transform hover:scale-105"
-          >
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-            Founder & Director @ {site.studio.name}
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-lilac-200">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+              {site.availability}
+            </span>
+            <a
+              href="#studio"
+              className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-lilac-300 transition-transform hover:scale-105"
+            >
+              Director @ {site.studio.name}
+            </a>
+          </div>
 
           <h1 className="font-display mt-6 text-5xl leading-[1.05] font-bold text-white md:text-7xl">
             Hi, I’m <span className="text-gradient">{site.shortName}</span>
             <br />I craft <TypeWord />
           </h1>
 
-          <p className="mt-6 text-lg text-slate-400 md:text-xl">
+          <p className="mt-4 font-display text-xl font-semibold text-lilac-200 md:text-2xl">
+            Unity Game Developer · Gameplay & Game Systems
+          </p>
+
+          <p className="mt-4 text-lg text-slate-400 md:text-xl">
             {site.tagline}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
-              href="#games"
+              href="#work"
               className="glow rounded-full bg-lilac-600 px-7 py-3.5 font-semibold text-white transition-transform hover:scale-105"
             >
-              View My Games
+              View My Work
             </a>
             <a
               href="#contact"

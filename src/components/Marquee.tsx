@@ -1,16 +1,16 @@
 const items = [
-  "Unity 3D",
-  "FPS",
-  "Simulation",
-  "Adventure",
-  "Game Design",
+  "Unity",
   "C#",
-  "Open World",
-  "Casual",
-  "Play Store",
-  "Parkour",
-  "Survival",
-  "Mobile Games",
+  "Gameplay Programming",
+  "Game Systems",
+  "URP",
+  "Cinemachine",
+  "Addressables",
+  "Mobile Optimization",
+  "2D / 3D",
+  "Hypercasual",
+  "Google Play",
+  "Git",
 ];
 
 /** Infinite scrolling keyword strip */

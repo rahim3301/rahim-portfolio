@@ -1,6 +1,6 @@
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
-import { skills } from "../../data/site";
+import { skillGroups } from "../../data/site";
 
 export default function Skills() {
   return (
@@ -14,15 +14,23 @@ export default function Skills() {
           description="The tools I use to take a game from first prototype to published product."
         />
 
-        <div className="flex flex-wrap justify-center gap-4">
-          {skills.map((skill, i) => (
-            <Reveal key={skill.name} delay={i * 0.04}>
-              <div className="glass group flex items-center gap-3 rounded-full px-6 py-3.5 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-lilac-600/40">
-                <span className="h-2.5 w-2.5 rounded-full bg-linear-to-r from-lilac-500 to-blush" />
-                <span className="font-medium text-slate-200">{skill.name}</span>
-                <span className="text-xs font-semibold text-lilac-400">
-                  {skill.level}
-                </span>
+        <div className="grid gap-6 md:grid-cols-3">
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.title} delay={i * 0.1}>
+              <div className="glass h-full rounded-3xl p-7">
+                <h3 className="font-display text-lg font-bold text-white">
+                  {group.title}
+                </h3>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-lilac-800/60 bg-night-800/60 px-3.5 py-1.5 text-sm font-medium text-slate-200 transition-colors hover:border-lilac-500 hover:text-lilac-200"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Reveal>
           ))}

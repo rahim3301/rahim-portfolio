@@ -1,6 +1,6 @@
 import Reveal from "../Reveal";
 import { site } from "../../data/site";
-import { studioGames } from "../../data/games";
+import { studioGames, indieProjects } from "../../data/games";
 
 export default function Studio() {
   return (
@@ -25,7 +25,7 @@ export default function Studio() {
                   />
                   <div>
                     <span className="inline-block rounded-full bg-white/15 px-4 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur">
-                      ✦ Founder & Director
+                      ✦ Building My Own Games
                     </span>
                     <h2 className="font-display mt-2 text-4xl font-bold md:text-6xl">
                       {site.studio.name}
@@ -34,10 +34,10 @@ export default function Studio() {
                 </div>
 
                 <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
-                  I founded and direct Offroad Interactive — a game studio
-                  building original mobile titles. From concept and game design
-                  to Play Store launch, we take games all the way from idea to
-                  players’ hands.
+                  Alongside professional development, I build and publish my own
+                  games under Offroad Interactive — small, focused projects I
+                  can develop, release and keep improving. Every title here I
+                  took from concept to Play Store.
                 </p>
 
                 {/* Studio stats */}
@@ -79,6 +79,26 @@ export default function Studio() {
                     </a>
                   ))}
                 </div>
+
+                {/* In development */}
+                {indieProjects.map((project) => (
+                  <div
+                    key={project.title}
+                    className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur"
+                  >
+                    <span className="rounded-full bg-amber-400/20 px-3 py-1 text-xs font-bold tracking-wide text-amber-300 uppercase">
+                      {project.status}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-display font-bold text-white">
+                        {project.title}
+                      </p>
+                      <p className="text-sm text-white/60">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
 
                 <div className="mt-10 flex flex-wrap gap-4">
                   <a

@@ -38,17 +38,20 @@ export default function About() {
           <div>
             <Reveal>
               <p className="text-lg leading-relaxed text-slate-300">
-                I grew up exploring game worlds — now I build them. I specialize
-                in <strong className="text-lilac-300">Unity 3D</strong> and have
-                shipped everything from hyper-casual and FPS titles to
-                parkour-style adventures on the Play Store.
+                I’m a{" "}
+                <strong className="text-lilac-300">Unity developer</strong> with
+                3 years of professional experience turning gameplay ideas into
+                working systems — player controllers, game modes, progression,
+                UI integration and mobile optimization. I’ve shipped
+                hypercasual, action, simulation and adventure titles to Google
+                Play.
               </p>
               <p className="mt-4 text-lg leading-relaxed text-slate-300">
-                Today I lead{" "}
-                <strong className="text-lilac-300">Offroad Interactive</strong>{" "}
-                as Director, where we craft original games. When I’m not
-                developing, I’m sketching anime — a hobby since childhood that
-                keeps a creative edge in everything I make.
+                Alongside professional work, I direct{" "}
+                <strong className="text-lilac-300">Offroad Interactive</strong>,
+                where I build and publish my own games — taking projects from
+                concept to release. When I’m not developing, I’m sketching
+                anime, a lifelong hobby that keeps a creative edge in my work.
               </p>
             </Reveal>
 
@@ -72,6 +75,35 @@ export default function About() {
             </Reveal>
           </div>
         </div>
+
+        {/* Development philosophy */}
+        <Reveal delay={0.1} className="mt-16">
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Clean Code",
+                text: "Code should be understandable, maintainable and practical — written for the next developer, not just the compiler.",
+              },
+              {
+                title: "Simplicity First",
+                text: "Don’t build complexity until the project actually requires it. Simple systems ship; clever ones stall.",
+              },
+              {
+                title: "Production Mindset",
+                text: "Stability, performance and iteration speed matter. A game isn’t done until players are holding it.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="glass rounded-3xl p-7">
+                <h3 className="font-display text-lg font-bold text-lilac-200">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-400">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

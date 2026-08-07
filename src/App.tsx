@@ -28,9 +28,9 @@ function App() {
       <main>
         <Hero />
         <Marquee />
+        <Games />
         <About />
         <Studio />
-        <Games />
         <Skills />
         <Contact />
       </main>
