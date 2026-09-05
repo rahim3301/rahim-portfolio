@@ -24,26 +24,28 @@ export type Project = {
   gradient: string;
 };
 
+/** My own solo-built title, called out in its own spotlight section */
+export const spotlightProject: Project = {
+  title: "Bloop: Bounce Shooter",
+  category: "Casual · Mobile · Solo Project",
+  description:
+    "Aim, bounce and defeat every Bloop with a single perfect shot — a casual bounce-shooter designed, built and shipped entirely solo, from concept to sprites to gameplay.",
+  role: [
+    "Game concept & design",
+    "Enemy & sprite art",
+    "UI/UX design",
+    "Unity gameplay programming",
+  ],
+  tech: ["Unity", "C#", "Android"],
+  status: "Published",
+  featured: true,
+  playStoreUrl:
+    "https://play.google.com/store/apps/details?id=com.offroadinteractives.bloopbounceshooter",
+  icon: "/games/bloop-bounce-shooter.png",
+  gradient: "from-lilac-600 via-lilac-800 to-night-900",
+};
+
 export const projects: Project[] = [
-  {
-    title: "Bloop: Bounce Shooter",
-    category: "Casual · Mobile · Solo Project",
-    description:
-      "Aim, bounce and defeat every Bloop with a single perfect shot — a casual bounce-shooter designed, built and shipped entirely solo, from concept to sprites to gameplay.",
-    role: [
-      "Game concept & design",
-      "Enemy & sprite art",
-      "UI/UX design",
-      "Unity gameplay programming",
-    ],
-    tech: ["Unity", "C#", "Android"],
-    status: "Published",
-    featured: true,
-    playStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.offroadinteractives.bloopbounceshooter",
-    icon: "/games/bloop-bounce-shooter.png",
-    gradient: "from-lilac-600 via-lilac-800 to-night-900",
-  },
   {
     title: "Western Hero: Offline Shooter",
     category: "Action · Mobile · 3D",

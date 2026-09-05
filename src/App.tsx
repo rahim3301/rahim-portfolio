@@ -7,6 +7,7 @@ import ClickBurst from "./components/ClickBurst";
 import Marquee from "./components/Marquee";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
+import Spotlight from "./components/sections/Spotlight";
 import Games from "./components/sections/Games";
 import Studio from "./components/sections/Studio";
 import Skills from "./components/sections/Skills";
@@ -28,6 +29,7 @@ function App() {
       <main>
         <Hero />
         <Marquee />
+        <Spotlight />
         <Games />
         <About />
         <Studio />
