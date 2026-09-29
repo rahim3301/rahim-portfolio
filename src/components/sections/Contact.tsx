@@ -1,75 +1,107 @@
+import { useState } from "react";
 import Reveal from "../Reveal";
+import SectionHeading from "../SectionHeading";
 import ContactForm from "../ContactForm";
+import SocialLinks from "../SocialLinks";
 import { site } from "../../data/site";
+import { Check, Copy, Mail, MapPin } from "../Icons";
 
-const socials = [
-  { label: "LinkedIn", href: site.socials.linkedin },
-  { label: "GitHub", href: site.socials.github },
-  { label: "Instagram", href: site.socials.instagram },
-  { label: "YouTube", href: site.socials.youtube },
-];
+function CopyEmail() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(site.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${site.email}`;
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      className="press grid h-9 w-9 shrink-0 place-items-center rounded-full text-slate-400 hover:bg-lilac-500/15 hover:text-white"
+      aria-label={copied ? "Email copied" : "Copy email address"}
+    >
+      {copied ? (
+        <Check key="check" className="icon-swap text-green-400" />
+      ) : (
+        <Copy key="copy" className="icon-swap" />
+      )}
+      <span className="sr-only" aria-live="polite">
+        {copied ? "Copied" : ""}
+      </span>
+    </button>
+  );
+}
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative scroll-mt-24 pt-28 pb-10">
+    <section id="contact" className="relative scroll-mt-24 py-28">
       <div className="blob right-[-8%] bottom-[10%] h-104 w-104 bg-lilac-700/25" />
 
-      <div className="mx-auto max-w-4xl px-6 text-center">
-        <Reveal>
-          <span className="glass inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest text-lilac-300 uppercase">
-            Contact
-          </span>
-          <h2 className="font-display mt-4 text-4xl font-bold text-white md:text-6xl">
-            Let’s build something
-            <br />
-            <span className="text-gradient">players love</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-slate-400">
-            Whether you’re hiring a remote Unity developer, want to partner with
-            my studio, or just talk game dev — my inbox is open.
-          </p>
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-semibold text-green-300">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
-            {site.availability}
-          </p>
-        </Reveal>
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          index="06"
+          eyebrow="Contact"
+          title="Let’s build something players love"
+        />
 
-        <Reveal delay={0.15} className="mt-10">
-          <ContactForm />
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <Reveal className="flex flex-col gap-6">
+            <p className="text-lg leading-relaxed text-slate-300">
+              Whether you’re hiring a remote Unity developer, want to partner
+              with my studio, or just want to talk game dev — my inbox is open.
+            </p>
 
-        <Reveal
-          delay={0.2}
-          className="mt-8 flex flex-wrap items-center justify-center gap-2 text-sm text-slate-400"
-        >
-          <span>Prefer email?</span>
-          <a
-            href={`mailto:${site.email}`}
-            className="font-semibold text-lilac-300 hover:underline"
-          >
-            {site.email}
-          </a>
-        </Reveal>
+            <p className="inline-flex w-fit items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1.5 text-sm font-semibold text-green-300">
+              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-green-400" />
+              {site.availability}
+            </p>
 
-        <Reveal delay={0.25} className="mt-10 flex justify-center gap-6">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-slate-400 transition-colors hover:text-lilac-300"
-            >
-              {s.label}
-            </a>
-          ))}
-        </Reveal>
+            <ul className="glass divide-y divide-lilac-400/10 rounded-3xl">
+              <li className="flex items-center gap-4 p-5">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lilac-600/20 text-lilac-300">
+                  <Mail size={20} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="block font-semibold break-all text-white hover:text-lilac-200"
+                  >
+                    {site.email}
+                  </a>
+                </div>
+                <CopyEmail />
+              </li>
+              <li className="flex items-center gap-4 p-5">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lilac-600/20 text-lilac-300">
+                  <MapPin size={20} />
+                </span>
+                <div>
+                  <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
+                    Based in
+                  </p>
+                  <p className="font-semibold text-white">
+                    {site.location} · Remote-friendly
+                  </p>
+                </div>
+              </li>
+            </ul>
 
-        <footer className="mt-20 border-t border-night-700 pt-8 pb-4 text-sm text-slate-500">
-          <p>
-            © {new Date().getFullYear()} {site.name} · {site.location}
-          </p>
-        </footer>
+            <SocialLinks />
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ContactForm />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ export default function About() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
+          index="01"
           eyebrow="About Me"
           title="Gamer at heart, developer by craft"
         />
@@ -77,7 +78,13 @@ export default function About() {
         </div>
 
         {/* Development philosophy */}
-        <Reveal delay={0.1} className="mt-16">
+        <Reveal delay={0.1} className="mt-20">
+          <div className="mb-6 flex items-center gap-4">
+            <h3 className="font-display text-xl font-bold text-white">
+              How I work
+            </h3>
+            <span className="h-px flex-1 bg-lilac-400/15" aria-hidden="true" />
+          </div>
           <div className="grid gap-6 md:grid-cols-3">
             {[
               {
@@ -92,11 +99,14 @@ export default function About() {
                 title: "Production Mindset",
                 text: "Stability, performance and iteration speed matter. A game isn’t done until players are holding it.",
               },
-            ].map((item) => (
+            ].map((item, i) => (
               <div key={item.title} className="glass rounded-3xl p-7">
-                <h3 className="font-display text-lg font-bold text-lilac-200">
+                <span className="font-display text-sm font-bold text-lilac-400">
+                  0{i + 1}
+                </span>
+                <h4 className="font-display mt-2 text-lg font-bold text-lilac-100">
                   {item.title}
-                </h3>
+                </h4>
                 <p className="mt-3 text-sm leading-relaxed text-slate-400">
                   {item.text}
                 </p>

@@ -1,6 +1,8 @@
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 import TiltCard from "../TiltCard";
+import Spotlight from "./Spotlight";
+import { ArrowUpRight, Star } from "../Icons";
 import { featuredProjects, moreProjects } from "../../data/games";
 
 export default function Games() {
@@ -10,16 +12,26 @@ export default function Games() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="Featured Work"
+          index="02"
+          eyebrow="Selected Work"
           title="Games I’ve built & shipped"
-          description="Published titles on the Google Play Store — and what I personally contributed to each."
+          description="Published titles on Google Play — and exactly what I contributed to each."
         />
+
+        <Spotlight />
+
+        <Reveal className="mb-8 flex items-center gap-4">
+          <h3 className="font-display text-xl font-bold text-white">
+            Shipped titles I’ve worked on
+          </h3>
+          <span className="h-px flex-1 bg-lilac-400/15" aria-hidden="true" />
+        </Reveal>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project, i) => (
-            <Reveal key={project.title} delay={i * 0.08}>
+            <Reveal key={project.title} delay={i * 0.06}>
               <TiltCard className="h-full">
-                <article className="glass hover:glow flex h-full flex-col overflow-hidden rounded-3xl transition-shadow">
+                <article className="glass hover:glow flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-300 ease-fluid">
                   {/* Cover: real game icon on a purple gradient */}
                   <div
                     className={`relative flex h-40 items-center justify-center bg-linear-to-br ${project.gradient}`}
@@ -35,8 +47,10 @@ export default function Games() {
                       {project.category}
                     </span>
                     {project.rating && (
-                      <span className="glass absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold text-amber-300">
-                        ★ {project.rating}
+                      <span className="glass absolute top-4 right-4 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold text-amber-300">
+                        <Star size={12} />
+                        <span className="sr-only">Rating</span>
+                        {project.rating}
                       </span>
                     )}
                   </div>
@@ -88,18 +102,7 @@ export default function Games() {
                         aria-label={`${project.title} on Google Play`}
                       >
                         Google Play
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          aria-hidden="true"
-                        >
-                          <path d="M7 17L17 7M9 7h8v8" />
-                        </svg>
+                        <ArrowUpRight size={14} />
                       </a>
                       {project.downloads && (
                         <span className="rounded-full bg-lilac-800/50 px-3 py-1 text-xs font-semibold text-lilac-200">
@@ -116,9 +119,12 @@ export default function Games() {
 
         {/* More projects — compact strip */}
         <Reveal delay={0.1} className="mt-16">
-          <h3 className="font-display mb-6 text-center text-xl font-bold text-white">
-            More Projects
-          </h3>
+          <div className="mb-6 flex items-center gap-4">
+            <h3 className="font-display text-xl font-bold text-white">
+              More projects
+            </h3>
+            <span className="h-px flex-1 bg-lilac-400/15" aria-hidden="true" />
+          </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {moreProjects.map((project) => (
               <a
@@ -126,7 +132,7 @@ export default function Games() {
                 href={project.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass group flex items-center gap-4 rounded-2xl p-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-lilac-700/30"
+                className="glass group flex items-center gap-4 rounded-2xl p-4 transition-[transform,box-shadow] duration-200 ease-fluid hover:-translate-y-1 hover:shadow-lg hover:shadow-lilac-700/30"
               >
                 <img
                   src={project.icon}
@@ -134,7 +140,7 @@ export default function Games() {
                   className="h-14 w-14 shrink-0 rounded-xl shadow-md shadow-black/40"
                   loading="lazy"
                 />
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-bold text-white group-hover:text-lilac-200">
                     {project.title}
                   </p>
@@ -142,6 +148,10 @@ export default function Games() {
                     {project.category}
                   </p>
                 </div>
+                <ArrowUpRight
+                  size={14}
+                  className="shrink-0 text-slate-500 transition-colors group-hover:text-lilac-300"
+                />
               </a>
             ))}
           </div>

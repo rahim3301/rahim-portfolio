@@ -22,6 +22,23 @@ export const site = {
   web3formsKey: "b56875be-cd87-40db-8fb8-8100d6aa7222",
 };
 
+/** Page flow — order matches the section order in App.tsx */
+export const navLinks = [
+  { label: "About", id: "about" },
+  { label: "Work", id: "work" },
+  { label: "Play", id: "play" },
+  { label: "Studio", id: "studio" },
+  { label: "Skills", id: "skills" },
+  { label: "Contact", id: "contact" },
+];
+
+/** Quick proof shown right under the hero CTAs */
+export const heroStats = [
+  { value: "3 yrs", label: "Professional Unity" },
+  { value: "10+", label: "Games worked on" },
+  { value: "100K+", label: "Downloads on top title" },
+];
+
 export const skillGroups = [
   {
     title: "Game Development",

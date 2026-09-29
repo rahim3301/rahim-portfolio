@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { site } from "../../data/site";
+import { heroStats, site } from "../../data/site";
+import { ArrowDown, ArrowRight } from "../Icons";
 
 const HeroScene = lazy(() => import("../three/HeroScene"));
 
@@ -33,7 +34,7 @@ function TypeWord() {
   }, [text, deleting, index]);
 
   return (
-    <span className="text-gradient">
+    <span className="text-gradient" aria-hidden="true">
       {text}
       <span className="animate-pulse text-lilac-400">|</span>
     </span>
@@ -44,7 +45,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-svh items-center overflow-hidden"
     >
       {/* Soft gradient blobs behind everything */}
       <div className="blob top-[-10%] left-[-10%] h-136 w-136 bg-lilac-700/30" />
@@ -70,29 +71,30 @@ export default function Hero() {
         </Suspense>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-24 lg:pt-0">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-32 pb-24">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
+          initial={{ opacity: 0, transform: "translateY(24px)" }}
+          animate={{ opacity: 1, transform: "translateY(0px)" }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           className="max-w-xl"
         >
           <div className="flex flex-wrap items-center gap-3">
-            <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-lilac-200">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />
+            <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-lilac-200 sm:text-sm">
+              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-green-400" />
               {site.availability}
             </span>
             <a
               href="#studio"
-              className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-lilac-300 transition-transform hover:scale-105"
+              className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-lilac-300 transition-colors hover:text-white sm:text-sm"
             >
               Director @ {site.studio.name}
             </a>
           </div>
 
-          <h1 className="font-display mt-6 text-5xl leading-[1.05] font-bold text-white md:text-7xl">
+          <h1 className="font-display mt-6 text-4xl leading-[1.05] font-bold text-white sm:text-5xl md:text-7xl">
             Hi, I’m <span className="text-gradient">{site.shortName}</span>
-            <br />I craft <TypeWord />
+            <br />I craft <span className="sr-only">games.</span>
+            <TypeWord />
           </h1>
 
           <p className="mt-4 font-display text-xl font-semibold text-lilac-200 md:text-2xl">
@@ -106,17 +108,33 @@ export default function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              className="glow rounded-full bg-lilac-600 px-7 py-3.5 font-semibold text-white transition-transform hover:scale-105"
+              className="press glow group inline-flex items-center gap-2 rounded-full bg-lilac-600 px-7 py-3.5 font-semibold text-white hover:bg-lilac-500"
             >
               View My Work
+              <ArrowRight className="transition-transform duration-200 ease-fluid group-hover:translate-x-1" />
             </a>
             <a
               href="#contact"
-              className="glass rounded-full px-7 py-3.5 font-semibold text-lilac-200 transition-transform hover:scale-105"
+              className="press glass rounded-full px-7 py-3.5 font-semibold text-lilac-100 hover:border-lilac-300/50 hover:text-white"
             >
               Let’s Talk
             </a>
           </div>
+
+          {/* Quick proof for recruiters skimming the fold */}
+          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-lilac-400/15 pt-6">
+            {heroStats.map((stat) => (
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="font-display text-2xl font-bold text-white md:text-3xl">
+                  {stat.value}
+                </dd>
+                <dd className="mt-1 text-xs leading-snug text-slate-400">
+                  {stat.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </motion.div>
       </div>
 
@@ -126,22 +144,16 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400"
-        aria-label="Scroll down"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs font-medium tracking-[0.25em] text-slate-500 uppercase transition-colors hover:text-lilac-300 md:flex"
+        aria-label="Scroll to about"
       >
-        <motion.svg
-          animate={{ y: [0, 8, 0] }}
+        Scroll
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.8 }}
-          width="26"
-          height="26"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
         >
-          <path d="M12 5v14M6 13l6 6 6-6" />
-        </motion.svg>
+          <ArrowDown size={20} />
+        </motion.span>
       </motion.a>
     </section>
   );

@@ -14,10 +14,11 @@ export default function Reveal({
 }: RevealProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      // Full transform strings stay on the compositor; x/y shorthands don't
+      initial={{ opacity: 0, transform: "translateY(24px)" }}
+      whileInView={{ opacity: 1, transform: "translateY(0px)" }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.6, delay, ease: [0.23, 1, 0.32, 1] }}
       className={className}
     >
       {children}

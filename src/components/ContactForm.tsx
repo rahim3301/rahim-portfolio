@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { site } from "../data/site";
+import { ArrowRight, Check } from "./Icons";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -44,8 +45,10 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="glass mx-auto max-w-xl rounded-3xl p-10 text-center">
-        <div className="text-5xl">🎉</div>
+      <div className="pop-in glass rounded-3xl p-10 text-center" role="status">
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-green-500/15 text-green-400">
+          <Check size={28} />
+        </div>
         <h3 className="font-display mt-4 text-2xl font-bold text-white">
           Message sent!
         </h3>
@@ -65,7 +68,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="glass mx-auto max-w-xl rounded-3xl p-8 text-left md:p-10"
+      className="glass rounded-3xl p-8 text-left md:p-10"
     >
       {/* Honeypot spam trap — hidden from humans */}
       <input
@@ -123,7 +126,7 @@ export default function ContactForm() {
       </label>
 
       {status === "error" && (
-        <p className="mt-4 text-sm text-red-400">
+        <p className="mt-4 text-sm text-red-400" role="alert">
           Something went wrong — please email me directly at {site.email}
         </p>
       )}
@@ -131,9 +134,12 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="glow mt-7 w-full rounded-full bg-lilac-600 px-8 py-4 font-semibold text-white transition-transform hover:scale-[1.02] disabled:opacity-60"
+        className="press glow group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lilac-600 px-8 py-4 font-semibold text-white hover:bg-lilac-500 disabled:opacity-60"
       >
-        {status === "sending" ? "Sending…" : "Send Message ✦"}
+        {status === "sending" ? "Sending…" : "Send Message"}
+        {status !== "sending" && (
+          <ArrowRight className="transition-transform duration-200 ease-fluid group-hover:translate-x-1" />
+        )}
       </button>
     </form>
   );

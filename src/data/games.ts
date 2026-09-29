@@ -47,6 +47,21 @@ export const spotlightProject: Project = {
 
 export const projects: Project[] = [
   {
+    title: "Crazy Park Prank: Fun Games",
+    category: "Simulation · Casual · Mobile",
+    description:
+      "Sneak around a park full of wild animals and pull off hilarious pranks — pick your trick, time it right and watch every animal react in its own funny way.",
+    // TODO (Rahim): confirm these match your exact contributions
+    role: ["Gameplay programming", "Game systems", "Unity implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.aimatlass.crazy.zoo.pranks.simulator",
+    icon: "/games/crazy-park-prank.webp",
+    gradient: "from-amber-500/30 via-lilac-700 to-night-900",
+  },
+  {
     title: "Western Hero: Offline Shooter",
     category: "Action · Mobile · 3D",
     description:

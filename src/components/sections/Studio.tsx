@@ -1,4 +1,6 @@
 import Reveal from "../Reveal";
+import SectionHeading from "../SectionHeading";
+import { ArrowUpRight } from "../Icons";
 import { site } from "../../data/site";
 import { studioGames, indieProjects } from "../../data/games";
 
@@ -8,6 +10,13 @@ export default function Studio() {
       <div className="blob top-[15%] left-[-10%] h-104 w-104 bg-lilac-600/25" />
 
       <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading
+          index="04"
+          eyebrow="My Studio"
+          title="Building & publishing my own games"
+          description="Original titles I took from concept to Play Store as studio director."
+        />
+
         <Reveal>
           {/* Rotating gradient border to spotlight the studio */}
           <div className="animated-border shadow-2xl shadow-lilac-700/30">
@@ -25,11 +34,11 @@ export default function Studio() {
                   />
                   <div>
                     <span className="inline-block rounded-full bg-white/15 px-4 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur">
-                      ✦ Building My Own Games
+                      {site.studio.role} · Founder
                     </span>
-                    <h2 className="font-display mt-2 text-4xl font-bold md:text-6xl">
+                    <h3 className="font-display mt-2 text-4xl font-bold md:text-6xl">
                       {site.studio.name}
-                    </h2>
+                    </h3>
                   </div>
                 </div>
 
@@ -70,10 +79,10 @@ export default function Studio() {
                       <img
                         src={game.icon}
                         alt={game.title}
-                        className="aspect-square w-full rounded-2xl shadow-lg shadow-black/40 transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:scale-110"
+                        className="aspect-square w-full rounded-2xl shadow-lg shadow-black/40 transition-transform duration-300 ease-fluid group-hover:-translate-y-1.5 group-hover:scale-110"
                         loading="lazy"
                       />
-                      <span className="line-clamp-1 text-center text-[10px] font-medium text-white/60 group-hover:text-white">
+                      <span className="line-clamp-1 text-center text-xs font-medium text-white/60 group-hover:text-white">
                         {game.title}
                       </span>
                     </a>
@@ -105,13 +114,14 @@ export default function Studio() {
                     href={site.studio.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-white px-7 py-3.5 font-semibold text-lilac-800 shadow-lg transition-transform hover:scale-105"
+                    className="press inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-lilac-800 shadow-lg hover:bg-lilac-100"
                   >
-                    Visit the Studio ↗
+                    Visit the Studio
+                    <ArrowUpRight />
                   </a>
                   <a
                     href="#contact"
-                    className="rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+                    className="press rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white backdrop-blur hover:bg-white/10"
                   >
                     Partner With Us
                   </a>

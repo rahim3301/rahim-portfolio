@@ -7,8 +7,9 @@ export default function Skills() {
     <section id="skills" className="relative scroll-mt-24 py-28">
       <div className="blob top-[20%] left-[-10%] h-96 w-96 bg-skysoft/10" />
 
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
+          index="05"
           eyebrow="Toolkit"
           title="Skills & technologies"
           description="The tools I use to take a game from first prototype to published product."
@@ -16,7 +17,7 @@ export default function Skills() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {skillGroups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 0.1}>
+            <Reveal key={group.title} delay={i * 0.06}>
               <div className="glass h-full rounded-3xl p-7">
                 <h3 className="font-display text-lg font-bold text-white">
                   {group.title}
