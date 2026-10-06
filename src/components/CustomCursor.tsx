@@ -74,6 +74,7 @@ export default function CustomCursor() {
         });
       }
       last = { x: e.clientX, y: e.clientY };
+      if (!raf && particles.length) raf = requestAnimationFrame(tick);
     };
 
     const tick = () => {
@@ -95,9 +96,9 @@ export default function CustomCursor() {
         ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
         ctx.fill();
       }
-      raf = requestAnimationFrame(tick);
+      // Sleep when the trail has faded — no work while the mouse is still
+      raf = particles.length ? requestAnimationFrame(tick) : 0;
     };
-    tick();
 
     const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
