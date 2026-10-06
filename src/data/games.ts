@@ -101,8 +101,12 @@ export const projects: Project[] = [
     title: "Smash Speed Rush",
     category: "Runner · Action · Mobile",
     description:
-      "Fast-paced smash runner — dash down colorful tracks, dodge traps, smash through obstacles and race to the finish line.",
-    role: ["Gameplay programming", "Game systems", "Unity implementation"],
+      "Fast-paced smash runner — dash down colorful tracks, dodge traps, smash through obstacles and race to the finish line. Developed solo from scratch, with art provided by the design team.",
+    role: [
+      "Sole developer — built from scratch",
+      "Gameplay design & mechanics ideas",
+      "Game systems & Unity implementation",
+    ],
     tech: ["Unity", "C#", "Android"],
     status: "Published",
     featured: true,
