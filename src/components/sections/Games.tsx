@@ -1,8 +1,7 @@
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 import TiltCard from "../TiltCard";
-import Spotlight from "./Spotlight";
-import { ArrowUpRight, Star } from "../Icons";
+import { Android, ArrowUpRight, Star } from "../Icons";
 import { featuredProjects, moreProjects } from "../../data/games";
 
 export default function Games() {
@@ -12,13 +11,11 @@ export default function Games() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="02"
-          eyebrow="Selected Work"
-          title="Games I’ve built & shipped"
-          description="Published titles on Google Play — and exactly what I contributed to each."
+          index="03"
+          eyebrow="Professional Work"
+          title="Games I’ve developed on the job"
+          description="Published titles I worked on as a Unity Game Developer — and what I contributed to each."
         />
-
-        <Spotlight />
 
         <Reveal className="mb-8 flex items-center gap-4">
           <h3 className="font-display text-xl font-bold text-white">
@@ -32,15 +29,25 @@ export default function Games() {
             <Reveal key={project.title} delay={i * 0.06}>
               <TiltCard className="h-full">
                 <article className="glass hover:glow flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-300 ease-fluid">
-                  {/* Cover: real game icon on a purple gradient */}
+                  {/* Cover: gameplay art fading into the card, icon overlapping */}
                   <div
-                    className={`relative flex h-40 items-center justify-center bg-linear-to-br ${project.gradient}`}
+                    className={`group/cover relative h-44 overflow-hidden bg-linear-to-br ${project.gradient}`}
                   >
-                    <div className="grid-overlay absolute inset-0" />
+                    {project.cover ? (
+                      <img
+                        src={project.cover}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-fluid group-hover/cover:scale-110"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="grid-overlay absolute inset-0" />
+                    )}
+                    <div className="absolute inset-0 bg-linear-to-t from-night-900 via-night-900/30 to-transparent" />
                     <img
                       src={project.icon}
                       alt={`${project.title} icon`}
-                      className="relative h-22 w-22 rounded-3xl shadow-2xl shadow-black/50"
+                      className="absolute bottom-3 left-5 h-16 w-16 rounded-2xl shadow-xl shadow-black/60 ring-2 ring-white/20"
                       loading="lazy"
                     />
                     <span className="glass absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-semibold text-lilac-200">
@@ -101,6 +108,7 @@ export default function Games() {
                         className="inline-flex items-center gap-1.5 text-sm font-semibold text-lilac-300 hover:text-lilac-200 hover:underline"
                         aria-label={`${project.title} on Google Play`}
                       >
+                        <Android size={14} />
                         Google Play
                         <ArrowUpRight size={14} />
                       </a>

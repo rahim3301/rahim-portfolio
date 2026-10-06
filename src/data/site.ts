@@ -25,6 +25,7 @@ export const site = {
 /** Page flow — order matches the section order in App.tsx */
 export const navLinks = [
   { label: "About", id: "about" },
+  { label: "My Games", id: "games" },
   { label: "Work", id: "work" },
   { label: "Play", id: "play" },
   { label: "Studio", id: "studio" },
@@ -37,6 +38,7 @@ export const heroStats = [
   { value: "3 yrs", label: "Professional Unity" },
   { value: "10+", label: "Games worked on" },
   { value: "100K+", label: "Downloads on top title" },
+  { value: "2", label: "Games built solo" },
 ];
 
 export const skillGroups = [

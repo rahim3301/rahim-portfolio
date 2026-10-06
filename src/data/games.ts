@@ -3,9 +3,9 @@
  * Structured project data — adding a new game is just adding
  * an entry here. Icons live in /public/games/ and /public/studio/.
  *
- * TODO (Rahim): refine the `role` bullets per project with your
- * exact contributions (e.g. "player controller", "level system",
- * "Addressables pipeline"). Keep them accurate — never invent.
+ * Client/company titles: worked on as a Unity Game Developer.
+ * Bloop + Offroad Interactive titles: built entirely solo —
+ * idea, assets, programming and release.
  */
 
 export type Project = {
@@ -18,40 +18,104 @@ export type Project = {
   status: "Published" | "In Development";
   featured: boolean;
   playStoreUrl: string;
+  appStoreUrl?: string;
+  /** Gameplay image used as the card cover */
+  cover?: string;
   icon: string;
   downloads?: string;
   rating?: string;
   gradient: string;
 };
 
-/** My own solo-built title, called out in its own spotlight section */
-export const spotlightProject: Project = {
-  title: "Bloop: Bounce Shooter",
-  category: "Casual · Mobile · Solo Project",
-  description:
-    "Aim, bounce and defeat every Bloop with a single perfect shot — a casual bounce-shooter designed, built and shipped entirely solo, from concept to sprites to gameplay.",
-  role: [
-    "Game concept & design",
-    "Enemy & sprite art",
-    "UI/UX design",
-    "Unity gameplay programming",
-  ],
-  tech: ["Unity", "C#", "Android"],
-  status: "Published",
-  featured: true,
-  playStoreUrl:
-    "https://play.google.com/store/apps/details?id=com.offroadinteractives.bloopbounceshooter",
-  icon: "/games/bloop-bounce-shooter.png",
-  gradient: "from-lilac-600 via-lilac-800 to-night-900",
+/** Visual theme for a solo game's showcase panel */
+export type GameTheme = "comic" | "neon";
+
+export type OwnGame = Project & {
+  theme: GameTheme;
+  /** Wide key-art render, blended into the showcase panel */
+  render: string;
+  /** Optional short muted gameplay clip, plays over the art on hover */
+  video?: string;
+  /** Short punchy line from the game's own branding */
+  hook: string;
+  isNew?: boolean;
 };
 
+/** My own games — idea, art, assets, programming and release all by me */
+export const ownGames: OwnGame[] = [
+  {
+    title: "Superhero Maker: Dress Up Game",
+    category: "Casual · Dress Up · Mobile",
+    hook: "Create your own superhero!",
+    description:
+      "A superhero creator and dress-up game — pick a Comic or Anime style, mix 500+ outfit pieces across 9 costume categories, build a whole team in your Super HQ and play mini games to earn new gear.",
+    role: [
+      "Game concept & design",
+      "All art & outfit assets",
+      "UI/UX design",
+      "Unity programming",
+      "Mini games & economy",
+    ],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.offroadstudios.superheromaker",
+    icon: "/games/superhero-maker.webp",
+    render: "/renders/superhero-maker.webp",
+    gradient: "from-sky-400 via-sky-500 to-blue-700",
+    theme: "comic",
+    isNew: true,
+  },
+  {
+    title: "Bloop: Bounce Shooter",
+    category: "Casual · Puzzle Shooter · Mobile",
+    hook: "Aim. Bounce. Clear the board.",
+    description:
+      "Aim, bounce and defeat every Bloop with a single perfect shot — a casual bounce-shooter designed, built and shipped entirely solo, from concept to sprites to gameplay.",
+    role: [
+      "Game concept & design",
+      "Enemy & sprite art",
+      "UI/UX design",
+      "Unity gameplay programming",
+    ],
+    tech: ["Unity", "C#", "Android", "iOS"],
+    status: "Published",
+    featured: true,
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.offroadinteractives.bloopbounceshooter",
+    appStoreUrl: "https://apps.apple.com/app/bloop-bubble-shooter/id6804321336",
+    icon: "/games/bloop-bounce-shooter.png",
+    render: "/renders/bloop.webp",
+    gradient: "from-lilac-600 via-lilac-800 to-night-900",
+    theme: "neon",
+  },
+];
+
+/** Bloop — also powers the playable mini version in the Play section */
+export const spotlightProject = ownGames[1];
+
+/** Games I developed professionally as a Unity Game Developer */
 export const projects: Project[] = [
+  {
+    title: "Smash Speed Rush",
+    category: "Runner · Action · Mobile",
+    description:
+      "Fast-paced smash runner — dash down colorful tracks, dodge traps, smash through obstacles and race to the finish line.",
+    role: ["Gameplay programming", "Game systems", "Unity implementation"],
+    tech: ["Unity", "C#", "Android"],
+    status: "Published",
+    featured: true,
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.lgs.smash.rush",
+    icon: "/games/smash-speed-rush.webp",
+    cover: "/covers/smash-speed-rush.webp",
+    gradient: "from-orange-500/40 via-lilac-700 to-night-900",
+  },
   {
     title: "Crazy Park Prank: Fun Games",
     category: "Simulation · Casual · Mobile",
     description:
       "Sneak around a park full of wild animals and pull off hilarious pranks — pick your trick, time it right and watch every animal react in its own funny way.",
-    // TODO (Rahim): confirm these match your exact contributions
     role: ["Gameplay programming", "Game systems", "Unity implementation"],
     tech: ["Unity", "C#", "Android"],
     status: "Published",
@@ -59,6 +123,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.aimatlass.crazy.zoo.pranks.simulator",
     icon: "/games/crazy-park-prank.webp",
+    cover: "/covers/crazy-park-prank.webp",
     gradient: "from-amber-500/30 via-lilac-700 to-night-900",
   },
   {
@@ -73,6 +138,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.turbotaxstudio.shooter.western.war.games.cover.survival",
     icon: "/games/western-hero.png",
+    cover: "/covers/western-hero.webp",
     downloads: "100K+",
     rating: "4.8",
     gradient: "from-lilac-600 via-lilac-800 to-night-900",
@@ -81,10 +147,11 @@ export const projects: Project[] = [
     title: "Dubai Offroad: Desert Racing",
     category: "Racing · Mobile · 3D",
     description:
-      "Desert rally racing across Dubai dunes — 4x4 trucks, upgrades and offroad physics. An original title built at my studio.",
+      "Desert rally racing across Dubai dunes — 4x4 trucks, upgrades and offroad physics. An original title I built solo at my studio.",
     role: [
-      "Game design & production",
-      "Unity development",
+      "Concept & game design",
+      "Art & assets",
+      "Unity programming",
       "Play Store release",
     ],
     tech: ["Unity", "C#", "Android"],
@@ -93,6 +160,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.offroadstudios.dubaioffroad",
     icon: "/studio/dubai-offroad.webp",
+    cover: "/covers/dubai-offroad.webp",
     downloads: "1K+",
     rating: "5.0",
     gradient: "from-blush/40 via-lilac-700 to-night-900",
@@ -109,6 +177,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.turbotax.peaksurvial.treasure.hunt.craft.peakgames",
     icon: "/games/island-survival.png",
+    cover: "/covers/island-survival.webp",
     downloads: "1K+",
     gradient: "from-blush/40 via-lilac-700 to-night-900",
   },
@@ -128,6 +197,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.hms.crazy.bank.office.splash.kick.smash.games",
     icon: "/games/crazy-bank.png",
+    cover: "/covers/crazy-bank.webp",
     downloads: "1K+",
     gradient: "from-lilac-700 via-night-800 to-night-900",
   },
@@ -147,6 +217,7 @@ export const projects: Project[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.hms.run.solve.survive.tasks",
     icon: "/games/run-solve.png",
+    cover: "/covers/run-solve.webp",
     gradient: "from-skysoft/30 via-lilac-800 to-night-900",
   },
   {
@@ -197,23 +268,6 @@ export const projects: Project[] = [
 export const featuredProjects = projects.filter((p) => p.featured);
 export const moreProjects = projects.filter((p) => !p.featured);
 
-/** Independent projects currently in progress */
-export type IndieProject = {
-  title: string;
-  status: string;
-  description: string;
-};
-
-export const indieProjects: IndieProject[] = [
-  {
-    title: "Mystic Adventure",
-    status: "In Development",
-    // TODO (Rahim): add a 1-2 sentence concept description
-    description:
-      "Independent game project currently in development — details coming soon.",
-  },
-];
-
 /** Games built at Offroad Interactive (icons in /public/studio/) */
 export type StudioGame = {
   title: string;
@@ -239,8 +293,8 @@ export const studioGames: StudioGame[] = [
   },
   {
     title: "Superhero Maker",
-    icon: "/studio/superhero-maker.webp",
-    url: "https://offroadinteractive.com/games/superhero-maker",
+    icon: "/games/superhero-maker.webp",
+    url: "https://play.google.com/store/apps/details?id=com.offroadstudios.superheromaker",
   },
   {
     title: "Dubai Racing",

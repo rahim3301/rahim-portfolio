@@ -9,7 +9,7 @@ export default function Skills() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="05"
+          index="06"
           eyebrow="Toolkit"
           title="Skills & technologies"
           description="The tools I use to take a game from first prototype to published product."

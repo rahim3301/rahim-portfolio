@@ -45,7 +45,7 @@ export default function Contact() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="06"
+          index="07"
           eyebrow="Contact"
           title="Let’s build something players love"
         />

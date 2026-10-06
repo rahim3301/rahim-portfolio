@@ -1,9 +1,9 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { heroStats, site } from "../../data/site";
 import { ArrowDown, ArrowRight } from "../Icons";
+import HeroShowcase from "../HeroShowcase";
 
-const HeroScene = lazy(() => import("../three/HeroScene"));
 
 const WORDS = ["games.", "worlds.", "adventures.", "experiences."];
 
@@ -55,7 +55,7 @@ export default function Hero() {
       {/* Techy grid overlay */}
       <div className="grid-overlay absolute inset-0" />
 
-      {/* 3D scene — right half on desktop, hidden on small screens.
+      {/* Game showcase — right half on desktop, hidden on small screens.
           Soft mask fades the edges so nothing ever looks "cut off". */}
       <div
         className="absolute top-0 right-0 hidden h-full w-1/2 lg:block"
@@ -66,9 +66,7 @@ export default function Hero() {
             "linear-gradient(to right, transparent 0%, black 18%, black 100%)",
         }}
       >
-        <Suspense fallback={null}>
-          <HeroScene />
-        </Suspense>
+        <HeroShowcase />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-32 pb-24">
@@ -122,7 +120,7 @@ export default function Hero() {
           </div>
 
           {/* Quick proof for recruiters skimming the fold */}
-          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-lilac-400/15 pt-6">
+          <dl className="mt-12 grid max-w-xl grid-cols-2 gap-6 sm:grid-cols-4 border-t border-lilac-400/15 pt-6">
             {heroStats.map((stat) => (
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>

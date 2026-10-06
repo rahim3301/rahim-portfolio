@@ -9,6 +9,7 @@ import ClickBurst from "./components/ClickBurst";
 import Marquee from "./components/Marquee";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
+import MyGames from "./components/sections/MyGames";
 import Games from "./components/sections/Games";
 import Play from "./components/sections/Play";
 import Studio from "./components/sections/Studio";
@@ -35,10 +36,11 @@ function App() {
       <ClickBurst />
       <Navbar />
       <main>
-        {/* Flow: intro → who I am → proof of work → play it → my studio → toolkit → hire me */}
+        {/* Flow: intro → who I am → my own games → professional work → play it → my studio → toolkit → hire me */}
         <Hero />
         <Marquee />
         <About />
+        <MyGames />
         <Games />
         <Play />
         <Studio />

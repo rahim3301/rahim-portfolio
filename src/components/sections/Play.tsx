@@ -17,7 +17,7 @@ export default function Play() {
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          index="03"
+          index="04"
           eyebrow="Take a Break"
           title="Play a mini Bloop"
           description="A tiny browser version of my solo game, rebuilt in TypeScript and Canvas for this site."
