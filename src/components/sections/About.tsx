@@ -5,7 +5,6 @@ import { stats } from "../../data/site";
 export default function About() {
   return (
     <section id="about" className="relative scroll-mt-24 py-28">
-      <div className="blob top-[10%] left-[-12%] h-104 w-104 bg-lilac-700/25" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -18,8 +17,8 @@ export default function About() {
           {/* Portrait (drop the image at /public/me.png) */}
           <Reveal>
             <div className="relative mx-auto aspect-4/5 w-full max-w-sm">
-              <div className="absolute inset-0 rotate-3 rounded-[2.5rem] bg-linear-to-br from-lilac-600 via-blush to-skysoft opacity-40" />
-              <div data-curtain className="glass relative flex h-full w-full items-center justify-center overflow-hidden rounded-[2.5rem]">
+              <div className="absolute inset-0 rotate-3 rounded-[2.5rem] bg-lilac-800" />
+              <div data-curtain className="surface relative flex h-full w-full items-center justify-center overflow-hidden rounded-[2.5rem]">
                 <img
                   src="/me.png"
                   alt="Portrait of Rahim Khan"
@@ -56,9 +55,9 @@ export default function About() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="glass rounded-2xl px-4 py-5 text-center"
+                  className="surface rounded-2xl px-4 py-5 text-center"
                 >
-                  <div className="font-display text-3xl font-bold text-gradient">
+                  <div className="font-display text-3xl font-bold text-blush">
                     {stat.value}
                   </div>
                   <div className="mt-1 text-xs font-medium text-slate-400">
@@ -93,7 +92,7 @@ export default function About() {
                 text: "Stability, performance and iteration speed matter. A game isn’t done until players are holding it.",
               },
             ].map((item, i) => (
-              <div key={item.title} className="glass rounded-3xl p-7">
+              <div key={item.title} className="surface rounded-3xl p-7">
                 <span className="font-display text-sm font-bold text-lilac-400">
                   0{i + 1}
                 </span>

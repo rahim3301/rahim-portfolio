@@ -22,13 +22,8 @@ const themes: Record<
   }
 > = {
   comic: {
-    panel: "bg-linear-to-br from-sky-300 via-sky-500 to-blue-700",
-    backdrop: (
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{ backgroundImage: "radial-gradient(circle, #facc15 2px, transparent 2.5px)", backgroundSize: "18px 18px" }}
-      />
-    ),
+    panel: "bg-[#2f9be8]",
+    backdrop: null,
     badge: "bg-red-500 text-white border-2 border-slate-900 -rotate-3",
     title: "text-yellow-300",
     titleStyle: { WebkitTextStroke: "2px #1e293b", textShadow: "4px 4px 0 #1e293b" },
@@ -41,45 +36,22 @@ const themes: Record<
     bar: "bg-yellow-300",
   },
   neon: {
-    panel: "bg-linear-to-br from-[#2a1155] via-[#1a0b38] to-night-950",
-    backdrop: (
-      <>
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #8af3ff 1px, transparent 1.5px), radial-gradient(circle, #00e5ff 1px, transparent 1.5px)",
-            backgroundSize: "70px 70px, 110px 110px",
-            backgroundPosition: "0 0, 35px 50px",
-          }}
-        />
-        <div className="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-blush/30 blur-3xl" />
-        <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-skysoft/20 blur-3xl" />
-      </>
-    ),
+    panel: "bg-[#1a0838]",
+    backdrop: null,
     badge: "bg-blush/20 text-blush border border-blush/50",
     title: "text-white",
-    titleStyle: { textShadow: "0 0 24px rgba(0,229,255,0.7)" },
+    titleStyle: { textShadow: "none" },
     hook: "text-skysoft font-bold tracking-wide uppercase",
     body: "text-lilac-100/90",
-    card: "border border-skysoft/30 bg-black/35 backdrop-blur",
+    card: "border border-blush/30 bg-[#24104a]",
     bullet: "bg-skysoft shadow-[0_0_8px_#8af3ff]",
     chip: "border border-skysoft/40 bg-black/30 text-skysoft",
-    cta: "bg-linear-to-r from-blush to-lilac-600 text-white shadow-[0_0_24px_rgba(0,229,255,0.55)] hover:brightness-110",
-    bar: "bg-linear-to-r from-blush to-skysoft",
+    cta: "bg-blush text-night-950 hover:bg-skysoft",
+    bar: "bg-blush",
   },
   cozy: {
-    panel: "bg-linear-to-br from-[#fde7d6] via-[#f9d0c0] to-[#f3b8a8]",
-    backdrop: (
-      <>
-        {/* soft quilt dots, like the game's patchwork rooms */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{ backgroundImage: "radial-gradient(circle, #fff7ef 3px, transparent 3.5px)", backgroundSize: "28px 28px" }}
-        />
-        <div className="absolute -top-24 left-1/3 h-80 w-80 rounded-full bg-white/50 blur-3xl" />
-      </>
-    ),
+    panel: "bg-[#f8d5c4]",
+    backdrop: null,
     badge: "bg-[#e86a5c] text-white rotate-2",
     title: "text-[#b93a2e]",
     titleStyle: { textShadow: "0 3px 0 #fff4ea" },

@@ -24,7 +24,7 @@
   --color-night-800: #121016;
   --color-night-700: #1b1622;
 
-  /* Gradient companions */
+  /* Electric Cyan accent */
   --color-blush: #00e5ff;
   --color-skysoft: #8af3ff;
 
@@ -92,8 +92,6 @@ body {
   html {
     scroll-behavior: auto;
   }
-  .animate-marquee,
-  .animated-border,
   .animate-pulse {
     animation: none;
   }
@@ -158,47 +156,14 @@ body {
   }
 }
 
-/* Gradient text */
-.text-gradient {
-  background: linear-gradient(110deg, #c9a8f0 0%, #8f6ee0 40%, #00e5ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Solid raised surface: one step up from the page, hairline border */
+.surface {
+  background: var(--color-night-800);
+  border: 1px solid rgba(157, 110, 216, 0.16);
 }
 
-/* Dark frosted glass surface */
-.glass {
-  background: rgba(95, 34, 163, 0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(157, 110, 216, 0.18);
-}
 
-/* Purple glow */
-.glow {
-  box-shadow:
-    0 0 24px rgba(95, 34, 163, 0.35),
-    0 0 80px rgba(95, 34, 163, 0.12);
-}
 
-/* Soft glowing blob backgrounds (pure CSS, used behind sections) */
-.blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(100px);
-  pointer-events: none;
-  /* own GPU layer so the big blur isn't repainted while scrolling */
-  transform: translateZ(0);
-}
-
-/* Subtle grid overlay for a techy feel */
-.grid-overlay {
-  background-image:
-    linear-gradient(rgba(157, 110, 216, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(157, 110, 216, 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-}
 
 /* Gentle idle float for hero artwork */
 @keyframes float {
@@ -219,46 +184,6 @@ body {
   .animate-float {
     animation: none;
   }
-}
-
-/* Infinite marquee */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-/* Rotating conic-gradient border (used to spotlight the studio card) */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotate-angle {
-  to {
-    --angle: 360deg;
-  }
-}
-
-.animated-border {
-  border-radius: 3.1rem;
-  padding: 2px;
-  background: conic-gradient(
-    from var(--angle),
-    rgba(127, 69, 196, 0.9),
-    rgba(0, 229, 255, 0.55),
-    rgba(138, 243, 255, 0.45),
-    rgba(127, 69, 196, 0.9)
-  );
-  animation: rotate-angle 6s linear infinite;
 }
 
 /* First-load entrances (CSS, so they run before any script) */

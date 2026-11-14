@@ -47,7 +47,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="pop-in glass rounded-3xl p-10 text-center" role="status">
+      <div className="pop-in surface rounded-3xl p-10 text-center" role="status">
         <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-green-500/15 text-green-400">
           <Check size={28} />
         </div>
@@ -70,7 +70,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="glass rounded-3xl p-8 text-left md:p-10"
+      className="surface rounded-3xl p-8 text-left md:p-10"
     >
       {/* Honeypot spam trap — hidden from humans */}
       <input
@@ -136,7 +136,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="press glow group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lilac-600 px-8 py-4 font-semibold text-white hover:bg-lilac-500 disabled:opacity-60"
+        className="pressgroup mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lilac-600 px-8 py-4 font-semibold text-white hover:bg-lilac-500 disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send Message"}
         {status !== "sending" && (

@@ -53,7 +53,7 @@ export default function Navbar() {
         aria-label="Primary"
         className={`flex w-full max-w-5xl items-center justify-between rounded-full border px-4 py-2.5 transition-[background-color,border-color,box-shadow] duration-300 ease-fluid md:px-6 ${
           scrolled
-            ? "border-lilac-400/20 bg-night-900/75 shadow-lg shadow-black/40 backdrop-blur-xl"
+            ? "border-lilac-400/20 bg-night-900"
             : "border-transparent bg-transparent"
         }`}
       >
@@ -112,7 +112,7 @@ export default function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="menu-enter absolute top-20 right-4 left-4 z-50 rounded-3xl border border-lilac-400/20 bg-night-900/95 p-4 shadow-2xl shadow-black/50 backdrop-blur-xl md:hidden"
+          className="menu-enter absolute top-20 right-4 left-4 z-50 rounded-3xl border border-lilac-400/20 bg-night-900 p-4 md:hidden"
         >
           <ul className="flex flex-col">
             {navLinks.map((link) => (

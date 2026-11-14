@@ -5,7 +5,6 @@ import { skillGroups } from "../../data/site";
 export default function Skills() {
   return (
     <section id="skills" className="relative scroll-mt-24 py-28">
-      <div className="blob top-[20%] left-[-10%] h-96 w-96 bg-skysoft/10" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -18,7 +17,7 @@ export default function Skills() {
         <div className="grid gap-6 md:grid-cols-3">
           {skillGroups.map((group, i) => (
             <Reveal key={group.title} delay={i * 0.06}>
-              <div className="glass h-full rounded-3xl p-7">
+              <div className="surface h-full rounded-3xl p-7">
                 <h3 className="font-display text-lg font-bold text-white">
                   {group.title}
                 </h3>

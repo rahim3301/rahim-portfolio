@@ -394,7 +394,7 @@ export default function BloopMini() {
   const playing = hud.status === "playing" || hud.status === "cleared";
 
   return (
-    <div className="glass overflow-hidden rounded-3xl">
+    <div className="surface overflow-hidden rounded-3xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-lilac-400/10 px-5 py-3 text-sm">
         <div className="flex items-center gap-5">
           <span className="text-slate-400">
@@ -449,7 +449,7 @@ export default function BloopMini() {
         )}
 
         {(hud.status === "idle" || hud.status === "lost") && (
-          <div className="absolute inset-0 grid place-items-center bg-night-950/70 p-6 text-center backdrop-blur-sm">
+          <div className="absolute inset-0 grid place-items-center bg-night-950/90 p-6 text-center">
             <div>
               <p className="font-display text-2xl font-bold text-white md:text-3xl">
                 {hud.status === "idle" ? "Pop every Bloop" : "Out of shots!"}
@@ -462,7 +462,7 @@ export default function BloopMini() {
               <button
                 type="button"
                 onClick={start}
-                className="press glow mt-6 rounded-full bg-lilac-600 px-7 py-3 font-semibold text-white hover:bg-lilac-500"
+                className="press mt-6 rounded-full bg-lilac-600 px-7 py-3 font-semibold text-white hover:bg-lilac-500"
               >
                 {hud.status === "idle" ? "Play" : "Try again"}
               </button>
