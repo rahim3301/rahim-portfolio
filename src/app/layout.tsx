@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     url: "/",
     title,
     description: shareDescription,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: title }],
+    images: [{ url: "/og-v2.png", width: 1200, height: 630, alt: title }],
   },
-  twitter: { card: "summary_large_image", title, description: shareDescription, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title, description: shareDescription, images: ["/og-v2.png"] },
   robots: { index: true, follow: true },
 };
 
