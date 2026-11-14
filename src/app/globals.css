@@ -1,30 +1,32 @@
 @import "tailwindcss";
 
-@theme {
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+@theme inline {
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
 
-  /* Purple palette on black */
-  --color-lilac-50: #faf7ff;
-  --color-lilac-100: #f3ecff;
-  --color-lilac-200: #e5d8ff;
-  --color-lilac-300: #d0b8fd;
-  --color-lilac-400: #b795f8;
-  --color-lilac-500: #a078f0;
-  --color-lilac-600: #8b5cf6;
-  --color-lilac-700: #7c3aed;
-  --color-lilac-800: #5b21b6;
-  --color-lilac-900: #3b1a78;
+@theme {
+  /* Royal Amethyst #3b0a6b (lilac-800) scale, on Jet Black #050505 (night-950), Electric Cyan #00e5ff accent (blush) */
+  --color-lilac-50: #f6f0fc;
+  --color-lilac-100: #ebdff8;
+  --color-lilac-200: #d9c4f2;
+  --color-lilac-300: #bb98e6;
+  --color-lilac-400: #9d6ed8;
+  --color-lilac-500: #7f45c4;
+  --color-lilac-600: #5f22a3;
+  --color-lilac-700: #4a1386;
+  --color-lilac-800: #3b0a6b;
+  --color-lilac-900: #25063f;
 
   /* Dark base */
-  --color-night-950: #08040f;
-  --color-night-900: #0d0716;
-  --color-night-800: #150d24;
-  --color-night-700: #1e1233;
+  --color-night-950: #050505;
+  --color-night-900: #0b0a0d;
+  --color-night-800: #121016;
+  --color-night-700: #1b1622;
 
   /* Gradient companions */
-  --color-blush: #e879f9;
-  --color-skysoft: #7dd3fc;
+  --color-blush: #00e5ff;
+  --color-skysoft: #8af3ff;
 
   /* Strong custom curves — built-in easings lack punch */
   --ease-fluid: cubic-bezier(0.23, 1, 0.32, 1);
@@ -80,7 +82,7 @@ body {
 
 /* Visible focus for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #a078f0;
+  outline: 2px solid #7f45c4;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -158,7 +160,7 @@ body {
 
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(120deg, #a078f0 0%, #d0b8fd 45%, #e879f9 100%);
+  background: linear-gradient(110deg, #c9a8f0 0%, #8f6ee0 40%, #00e5ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -166,17 +168,17 @@ body {
 
 /* Dark frosted glass surface */
 .glass {
-  background: rgba(139, 92, 246, 0.08);
+  background: rgba(95, 34, 163, 0.08);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(183, 149, 248, 0.18);
+  border: 1px solid rgba(157, 110, 216, 0.18);
 }
 
 /* Purple glow */
 .glow {
   box-shadow:
-    0 0 24px rgba(139, 92, 246, 0.35),
-    0 0 80px rgba(139, 92, 246, 0.12);
+    0 0 24px rgba(95, 34, 163, 0.35),
+    0 0 80px rgba(95, 34, 163, 0.12);
 }
 
 /* Soft glowing blob backgrounds (pure CSS, used behind sections) */
@@ -192,8 +194,8 @@ body {
 /* Subtle grid overlay for a techy feel */
 .grid-overlay {
   background-image:
-    linear-gradient(rgba(183, 149, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(183, 149, 248, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(157, 110, 216, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 110, 216, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
@@ -251,10 +253,44 @@ body {
   padding: 2px;
   background: conic-gradient(
     from var(--angle),
-    rgba(160, 120, 240, 0.9),
-    rgba(232, 121, 249, 0.55),
-    rgba(125, 211, 252, 0.45),
-    rgba(160, 120, 240, 0.9)
+    rgba(127, 69, 196, 0.9),
+    rgba(0, 229, 255, 0.55),
+    rgba(138, 243, 255, 0.45),
+    rgba(127, 69, 196, 0.9)
   );
   animation: rotate-angle 6s linear infinite;
+}
+
+/* First-load entrances (CSS, so they run before any script) */
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .enter-rise {
+    animation: enter-rise 0.9s var(--ease-fluid) both;
+  }
+  .enter-fade {
+    animation: enter-fade 0.8s ease 1.2s both;
+  }
+}
+
+/* Swipe rows (game screenshots on phones): snap one shot at a time, no visible scrollbar */
+.swipe-row {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.swipe-row::-webkit-scrollbar {
+  display: none;
+}
+.swipe-row > * {
+  scroll-snap-align: start;
 }

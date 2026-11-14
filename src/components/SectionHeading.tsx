@@ -22,7 +22,7 @@ export default function SectionHeading({
           <span className="h-px w-10 bg-lilac-500/60" aria-hidden="true" />
           {eyebrow}
         </div>
-        <h2 className="font-display mt-4 max-w-2xl text-4xl leading-tight font-bold text-balance text-white md:text-5xl">
+        <h2 data-split className="font-display mt-4 max-w-2xl text-4xl leading-tight font-bold text-balance text-white md:text-5xl">
           {title}
         </h2>
       </div>

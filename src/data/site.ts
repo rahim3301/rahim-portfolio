@@ -7,6 +7,7 @@ export const site = {
     "I build gameplay systems, mechanics and production-ready experiences in Unity — from hypercasual mobile games to action and adventure projects.",
   email: "ar480014@gmail.com",
   location: "Lahore, Pakistan",
+  url: "https://rahim-portfolio-sigma.vercel.app",
   studio: {
     name: "Offroad Interactive",
     url: "https://offroadinteractive.com",
@@ -38,7 +39,7 @@ export const heroStats = [
   { value: "3 yrs", label: "Professional Unity" },
   { value: "10+", label: "Games worked on" },
   { value: "100K+", label: "Downloads on top title" },
-  { value: "2", label: "Games built solo" },
+  { value: "3", label: "Games built solo" },
 ];
 
 export const skillGroups = [

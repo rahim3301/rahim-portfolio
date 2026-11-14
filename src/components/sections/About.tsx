@@ -19,18 +19,11 @@ export default function About() {
           <Reveal>
             <div className="relative mx-auto aspect-4/5 w-full max-w-sm">
               <div className="absolute inset-0 rotate-3 rounded-[2.5rem] bg-linear-to-br from-lilac-600 via-blush to-skysoft opacity-40" />
-              <div className="glass relative flex h-full w-full items-center justify-center overflow-hidden rounded-[2.5rem]">
-                {/* Fallback initials show until /me.png exists */}
-                <span className="font-display text-8xl font-bold text-gradient">
-                  RK
-                </span>
+              <div data-curtain className="glass relative flex h-full w-full items-center justify-center overflow-hidden rounded-[2.5rem]">
                 <img
                   src="/me.png"
                   alt="Portrait of Rahim Khan"
                   className="absolute inset-0 h-full w-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
                 />
               </div>
             </div>
@@ -38,7 +31,7 @@ export default function About() {
 
           <div>
             <Reveal>
-              <p className="text-lg leading-relaxed text-slate-300">
+              <p data-fill className="text-lg leading-relaxed text-slate-300">
                 I’m a{" "}
                 <strong className="text-lilac-300">Unity developer</strong> with
                 3 years of professional experience turning gameplay ideas into

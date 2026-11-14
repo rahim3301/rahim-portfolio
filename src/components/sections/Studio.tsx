@@ -16,7 +16,7 @@ export default function Studio() {
         <SectionHeading
           index="05"
           eyebrow="My Studio"
-          title="Building & publishing my own games"
+          title="My own game studio"
           description="Original titles I built solo — from idea and assets to code and Play Store release."
         />
 

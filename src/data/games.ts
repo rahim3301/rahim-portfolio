@@ -28,9 +28,14 @@ export type Project = {
 };
 
 /** Visual theme for a solo game's showcase panel */
-export type GameTheme = "comic" | "neon";
+export type GameTheme = "comic" | "neon" | "cozy";
 
-export type OwnGame = Project & {
+export type OwnGame = Omit<Project, "playStoreUrl" | "status"> & {
+  status: Project["status"] | "Coming Soon";
+  /** Missing while the game is not public yet */
+  playStoreUrl?: string;
+  /** Store screenshots (portrait, 540x960), shown on the sliding rail */
+  shots: string[];
   theme: GameTheme;
   /** Wide key-art render, blended into the showcase panel */
   render: string;
@@ -40,6 +45,10 @@ export type OwnGame = Project & {
   hook: string;
   isNew?: boolean;
 };
+
+function shots(folder: string, count: number) {
+  return Array.from({ length: count }, (_, i) => `/shots/${folder}/${String(i + 1).padStart(2, "0")}.webp`);
+}
 
 /** My own games — idea, art, assets, programming and release all by me */
 export const ownGames: OwnGame[] = [
@@ -61,8 +70,9 @@ export const ownGames: OwnGame[] = [
     featured: true,
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.offroadstudios.superheromaker",
-    icon: "/games/superhero-maker.webp",
+    icon: "/games/superhero-maker-icon-v2.webp",
     render: "/renders/superhero-maker.webp",
+    shots: shots("shm", 8),
     gradient: "from-sky-400 via-sky-500 to-blue-700",
     theme: "comic",
     isNew: true,
@@ -72,7 +82,7 @@ export const ownGames: OwnGame[] = [
     category: "Casual · Puzzle Shooter · Mobile",
     hook: "Aim. Bounce. Clear the board.",
     description:
-      "Aim, bounce and defeat every Bloop with a single perfect shot — a casual bounce-shooter designed, built and shipped entirely solo, from concept to sprites to gameplay.",
+      "One shot, bank it off the walls. A casual bounce shooter with 11 worlds, 300 levels, trick shots, power-ups and daily challenges, designed, built and shipped entirely solo on Android and iOS.",
     role: [
       "Game concept & design",
       "Enemy & sprite art",
@@ -85,15 +95,38 @@ export const ownGames: OwnGame[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.offroadinteractives.bloopbounceshooter",
     appStoreUrl: "https://apps.apple.com/app/bloop-bubble-shooter/id6804321336",
-    icon: "/games/bloop-bounce-shooter.png",
-    render: "/renders/bloop.webp",
+    icon: "/games/bloop-icon-v3.webp",
+    render: "/renders/bloop-v3.webp",
+    shots: shots("bloop", 7),
     gradient: "from-lilac-600 via-lilac-800 to-night-900",
     theme: "neon",
+  },
+  {
+    title: "Kitten Box Parade: Cat Puzzle",
+    category: "Casual · Cozy Puzzle · Mobile",
+    hook: "Tap the front kitten. Plan ahead.",
+    description:
+      "A cozy logic puzzle: tap the kitten at the front of each line to send it home to its colour box, with only 3 pillows to wait on. 150 levels across 8 cozy rooms, six named kittens to dress up and pet, and no timers, no lives.",
+    role: [
+      "Game concept & design",
+      "Level design (150 levels)",
+      "Art direction & UI",
+      "Unity programming",
+    ],
+    tech: ["Unity 6", "C#", "URP 2D", "DOTween"],
+    status: "Coming Soon",
+    featured: true,
+    icon: "/games/kitten-box-parade.webp",
+    render: "/renders/kitten-box-parade.webp",
+    shots: shots("kitten", 8),
+    gradient: "from-orange-200 via-rose-200 to-amber-100",
+    theme: "cozy",
+    isNew: true,
   },
 ];
 
 /** Bloop — also powers the playable mini version in the Play section */
-export const spotlightProject = ownGames[1];
+export const spotlightProject = ownGames.find((g) => g.theme === "neon")!;
 
 /** Games I developed professionally as a Unity Game Developer */
 export const projects: Project[] = [
@@ -297,7 +330,7 @@ export const studioGames: StudioGame[] = [
   },
   {
     title: "Superhero Maker",
-    icon: "/games/superhero-maker.webp",
+    icon: "/games/superhero-maker-icon-v2.webp",
     url: "https://play.google.com/store/apps/details?id=com.offroadstudios.superheromaker",
   },
   {

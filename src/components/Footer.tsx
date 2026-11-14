@@ -48,6 +48,16 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Giant wordmark that rises from its own baseline (see Motion) */}
+      <div className="overflow-hidden px-4" aria-hidden="true">
+        <p
+          data-wordmark
+          className="font-display text-center text-[clamp(3rem,15.5vw,15rem)] text-lilac-400/80 leading-[0.85] font-bold tracking-tighter whitespace-nowrap select-none"
+        >
+          RAHIM KHAN
+        </p>
+      </div>
+
       <div className="border-t border-lilac-400/10">
         <p className="mx-auto max-w-6xl px-6 py-6 text-xs text-slate-500">
           © {new Date().getFullYear()} {site.name}. All rights reserved.

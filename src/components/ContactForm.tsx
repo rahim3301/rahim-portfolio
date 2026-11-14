@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type FormEvent } from "react";
 import { site } from "../data/site";
 import { ArrowRight, Check } from "./Icons";

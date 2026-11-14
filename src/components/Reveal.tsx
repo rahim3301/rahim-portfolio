@@ -1,37 +1,13 @@
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-type RevealProps = {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-};
-
-export default function Reveal({
-  children,
-  delay = 0,
-  className,
-}: RevealProps) {
+/**
+ * Marks content to rise into view as it is scrolled to (animated by Motion).
+ * Content stays visible without JavaScript and under reduced motion.
+ */
+export default function Reveal({ children, className }: { children: ReactNode; delay?: number; className?: string }) {
   return (
-    <motion.div
-      // Full transform strings stay on the compositor; x/y shorthands don't
-      // Springy pop-in: rises and settles with a little overshoot
-      initial={{
-        opacity: 0,
-        transform: "translateY(40px) scale(0.96)",
-      }}
-      whileInView={{
-        opacity: 1,
-        transform: "translateY(0px) scale(1)",
-      }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        transform: { type: "spring", stiffness: 140, damping: 14, mass: 0.8, delay },
-        opacity: { duration: 0.5, delay },
-      }}
-      className={className}
-    >
+    <div data-reveal className={className}>
       {children}
-    </motion.div>
+    </div>
   );
 }

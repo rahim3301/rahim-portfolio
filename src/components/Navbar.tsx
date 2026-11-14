@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { navLinks } from "../data/site";
 import { Close, Menu } from "./Icons";

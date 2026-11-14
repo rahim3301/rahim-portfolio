@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -28,13 +30,14 @@ function makeSparks(): Spark[] {
   });
 }
 
-const COLORS = ["#a078f0", "#e879f9", "#7dd3fc", "#d0b8fd"];
+const COLORS = ["#7f45c4", "#00e5ff", "#8af3ff", "#bb98e6"];
 
 /** Shockwave + star burst wherever the visitor clicks */
 export default function ClickBurst() {
   const [bursts, setBursts] = useState<Burst[]>([]);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let nextId = 0;
     const onDown = (e: PointerEvent) => {
       const burst = {
@@ -64,7 +67,7 @@ export default function ClickBurst() {
           {/* shockwave ring */}
           <motion.span
             className="absolute block h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blush"
-            style={{ boxShadow: "0 0 16px #e879f9" }}
+            style={{ boxShadow: "0 0 16px #00e5ff" }}
             initial={{ scale: 0.2, opacity: 1 }}
             animate={{ scale: 5, opacity: 0 }}
             transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}

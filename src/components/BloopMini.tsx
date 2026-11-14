@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
 
 const W = 800;
@@ -7,7 +9,7 @@ const SPEED = 640;
 const MAX_BOUNCES = 4;
 const MIN_ANGLE = 0.15;
 const CANNON = { x: W / 2, y: H - 26 };
-const COLORS = ["#a078f0", "#e879f9", "#7dd3fc", "#fbbf24", "#b795f8"];
+const COLORS = ["#7f45c4", "#00e5ff", "#8af3ff", "#fbbf24", "#9d6ed8"];
 const BEST_KEY = "bloop-mini-best";
 
 type Bloop = { x: number; y: number; baseY: number; r: number; vx: number; phase: number; color: string };
@@ -164,7 +166,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
   ctx.clearRect(0, 0, W, H);
 
-  ctx.strokeStyle = "rgba(183, 149, 248, 0.06)";
+  ctx.strokeStyle = "rgba(157, 110, 216, 0.06)";
   ctx.lineWidth = 1;
   for (let x = 0; x <= W; x += 40) {
     ctx.beginPath();
@@ -227,7 +229,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
       ctx.beginPath();
       ctx.arc(ex, ey, b.r * 0.26, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "#1e1233";
+      ctx.fillStyle = "#1b1622";
       ctx.beginPath();
       ctx.arc(ex + Math.cos(look) * b.r * 0.1, ey + Math.sin(look) * b.r * 0.1, b.r * 0.13, 0, Math.PI * 2);
       ctx.fill();
@@ -244,7 +246,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.globalAlpha = 1;
 
   if (g.ball) {
-    ctx.shadowColor = "#b795f8";
+    ctx.shadowColor = "#9d6ed8";
     ctx.shadowBlur = 18;
     ctx.fillStyle = "#fff";
     ctx.beginPath();
@@ -256,13 +258,13 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.save();
   ctx.translate(CANNON.x, CANNON.y);
   ctx.rotate(g.angle);
-  ctx.fillStyle = "#a078f0";
+  ctx.fillStyle = "#7f45c4";
   ctx.beginPath();
   ctx.roundRect(0, -8, 42, 16, 8);
   ctx.fill();
   ctx.restore();
-  ctx.fillStyle = "#3b1a78";
-  ctx.strokeStyle = "#b795f8";
+  ctx.fillStyle = "#25063f";
+  ctx.strokeStyle = "#9d6ed8";
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.arc(CANNON.x, CANNON.y, 22, 0, Math.PI * 2);

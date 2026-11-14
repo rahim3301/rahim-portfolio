@@ -1,112 +1,79 @@
-import { useEffect } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import { ownGames, projects } from "../data/games";
 
-/** App icons that float around the key art */
+const [shm, bloop, kitten] = ownGames;
+
+/** App icons that float around the key art; deeper ones drift further against the pointer */
 const floatingIcons = [
-  { src: ownGames[0].icon, className: "top-[18%] left-[10%] h-20 w-20", depth: 40, delay: 0 },
-  { src: ownGames[1].icon, className: "top-[16%] right-[14%] h-24 w-24", depth: 55, delay: 0.6 },
-  { src: projects[2].icon, className: "bottom-[16%] left-[16%] h-16 w-16", depth: 30, delay: 1.2 },
-  { src: projects[0].icon, className: "right-[18%] bottom-[12%] h-18 w-18", depth: 45, delay: 0.3 },
-  { src: projects[1].icon, className: "top-[50%] right-[6%] h-14 w-14", depth: 25, delay: 0.9 },
+  { src: shm.icon, className: "top-[0%] right-[2%] h-20 w-20", depth: 40, delay: 0 },
+  { src: bloop.icon, className: "bottom-[2%] right-[4%] h-20 w-20", depth: 55, delay: 0.6 },
+  { src: kitten.icon, className: "top-[38%] -left-[2%] h-16 w-16", depth: 50, delay: 1.2 },
+  { src: projects[0].icon, className: "bottom-[0%] left-[8%] h-14 w-14", depth: 35, delay: 0.3 },
 ];
 
-function FloatingIcon({
-  icon,
-  x,
-  y,
-}: {
-  icon: (typeof floatingIcons)[number];
-  x: MotionValue<number>;
-  y: MotionValue<number>;
-}) {
-  // Closer icons drift further against the mouse
-  const ix = useTransform(x, (v) => v * -icon.depth);
-  const iy = useTransform(y, (v) => v * -icon.depth);
-  return (
-    <motion.div
-      style={{ x: ix, y: iy, translateZ: 60 }}
-      className={`absolute ${icon.className}`}
-    >
-      <img
-        src={icon.src}
-        alt=""
-        className="animate-float h-full w-full rounded-2xl shadow-xl shadow-black/60 ring-1 ring-white/20"
-        style={{ animationDelay: `${icon.delay}s` }}
-      />
-    </motion.div>
-  );
-}
+const cards = [
+  { game: shm, className: "top-[6%] left-[2%] w-[76%] rotate-[-6deg]", z: -50, delay: "0.15s" },
+  { game: kitten, className: "top-[31%] right-[0%] w-[74%] rotate-[4deg]", z: -10, delay: "0.3s" },
+  { game: bloop, className: "top-[56%] left-[8%] w-[76%] rotate-[-2deg]", z: 40, delay: "0.45s" },
+];
 
 /**
- * Hero visual: my own games' key art as tilted cards with the
- * app icons floating around them, all leaning toward the mouse.
+ * Hero visual: my own games' key art as tilted cards with the app icons floating around them,
+ * all leaning toward the pointer.
  */
 export default function HeroShowcase() {
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 60, damping: 18 });
-  const y = useSpring(my, { stiffness: 60, damping: 18 });
+  const stage = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = stage.current;
+    if (!el) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) return;
+    const rx = gsap.quickTo(el, "rotationX", { duration: 1, ease: "power3.out" });
+    const ry = gsap.quickTo(el, "rotationY", { duration: 1, ease: "power3.out" });
+    const icons = gsap.utils.toArray<HTMLElement>("[data-depth]", el).map((icon) => ({
+      x: gsap.quickTo(icon, "x", { duration: 1, ease: "power3.out" }),
+      y: gsap.quickTo(icon, "y", { duration: 1, ease: "power3.out" }),
+      depth: Number(icon.dataset.depth),
+    }));
     const onMove = (e: PointerEvent) => {
-      mx.set(e.clientX / window.innerWidth - 0.5);
-      my.set(e.clientY / window.innerHeight - 0.5);
+      const nx = e.clientX / window.innerWidth - 0.5;
+      const ny = e.clientY / window.innerHeight - 0.5;
+      ry(nx * 14);
+      rx(ny * -10);
+      icons.forEach((i) => (i.x(nx * -i.depth), i.y(ny * -i.depth)));
     };
     window.addEventListener("pointermove", onMove);
     return () => window.removeEventListener("pointermove", onMove);
-  }, [mx, my]);
-
-  const rotateY = useTransform(x, [-0.5, 0.5], [-8, 8]);
-  const rotateX = useTransform(y, [-0.5, 0.5], [6, -6]);
+  }, []);
 
   return (
     <div className="relative h-full w-full [perspective:1200px]">
-      <motion.div
-        style={{ rotateX, rotateY }}
-        className="absolute inset-0 [transform-style:preserve-3d]"
-      >
-        {/* Back card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute top-[20%] left-[16%] w-[70%] rotate-[-6deg]"
-          style={{ translateZ: -40 }}
-        >
-          <img
-            src={ownGames[0].render}
-            alt={`${ownGames[0].title} key art`}
-            className="aspect-[16/10] w-full rounded-3xl object-cover object-right shadow-2xl shadow-black/60 ring-1 ring-white/15"
-          />
-        </motion.div>
-
-        {/* Front card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute top-[46%] left-[26%] w-[66%] rotate-[4deg]"
-          style={{ translateZ: 40 }}
-        >
-          <div className="absolute -inset-6 rounded-[2.5rem] bg-blush/25 blur-3xl" />
-          <img
-            src={ownGames[1].render}
-            alt={`${ownGames[1].title} key art`}
-            className="relative aspect-[16/10] w-full rounded-3xl object-cover shadow-2xl shadow-black/70 ring-1 ring-white/20"
-          />
-        </motion.div>
+      <div ref={stage} className="absolute inset-0 [transform-style:preserve-3d]">
+        {cards.map(({ game, className, z, delay }) => (
+          <div key={game.title} className={`absolute ${className}`} style={{ transform: `translateZ(${z}px)` }}>
+            <img
+              src={game.render}
+              alt={`${game.title} key art`}
+              className="enter-rise aspect-[2/1] w-full rounded-3xl object-cover shadow-2xl shadow-black/60 ring-1 ring-white/20"
+              style={{ animationDelay: delay }}
+            />
+          </div>
+        ))}
 
         {floatingIcons.map((icon) => (
-          <FloatingIcon key={icon.src} icon={icon} x={x} y={y} />
+          <div key={icon.src} data-depth={icon.depth} className={`absolute ${icon.className}`} style={{ transform: "translateZ(70px)" }}>
+            <img
+              src={icon.src}
+              alt=""
+              className="animate-float h-full w-full rounded-2xl shadow-xl shadow-black/60 ring-1 ring-white/20"
+              style={{ animationDelay: `${icon.delay}s` }}
+            />
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

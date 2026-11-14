@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -9,7 +11,7 @@ import {
 
 type Mode = "default" | "link" | "text";
 
-const TRAIL_COLORS = ["#a078f0", "#e879f9", "#7dd3fc"];
+const TRAIL_COLORS = ["#7f45c4", "#00e5ff", "#8af3ff"];
 
 /**
  * Game-style crosshair cursor: a snappy core dot, a trailing reticle that
@@ -163,7 +165,7 @@ export default function CustomCursor() {
               <span
                 key={c}
                 className={`absolute h-3 w-3 transition-colors duration-200 ${c} ${link ? "border-blush" : "border-lilac-300"}`}
-                style={{ filter: `drop-shadow(0 0 6px ${link ? "#e879f9" : "#a078f0"})` }}
+                style={{ filter: `drop-shadow(0 0 6px ${link ? "#00e5ff" : "#7f45c4"})` }}
               />
             ))}
           </div>
@@ -177,7 +179,7 @@ export default function CustomCursor() {
         aria-hidden="true"
       >
         <motion.div
-          className="h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_10px_#e879f9,0_0_20px_#a078f0]"
+          className="h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_10px_#00e5ff,0_0_20px_#7f45c4]"
           animate={{ scale: hidden ? 0 : pressed ? 2.2 : link ? 0.6 : 1 }}
           transition={{ type: "spring", stiffness: 600, damping: 20 }}
         />
