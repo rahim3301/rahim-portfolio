@@ -9,7 +9,7 @@ export default function WordRows({ rows, quiet = false }: { rows: [string, strin
           className={`font-display flex w-max gap-[0.4em] text-[clamp(3.5rem,11vw,10rem)] leading-[0.95] font-bold tracking-tight whitespace-nowrap uppercase ${
             i === 0
               ? quiet ? "text-lilac-300/15" : "text-white"
-              : "text-transparent [-webkit-text-stroke:1.5px_rgba(157,110,216,0.55)]"
+              : "text-transparent [-webkit-text-stroke:1.5px_rgba(240,165,138,0.55)]"
           }`}
         >
           {Array.from({ length: 4 }, (_, k) => (

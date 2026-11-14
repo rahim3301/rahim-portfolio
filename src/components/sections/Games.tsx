@@ -10,6 +10,7 @@ const speeds = [-6, 10, -3];
 export default function Games() {
   return (
     <section id="work" className="relative scroll-mt-24 py-28">
+      <div className="blob right-[-10%] bottom-[0%] h-md w-md bg-lilac-700/25" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -51,7 +52,7 @@ export default function Games() {
                 href={project.playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="surface group flex items-center gap-4 rounded-2xl p-4 transition-[transform,box-shadow] duration-200 ease-fluid hover:-translate-y-1 hover:shadow-lg hover:shadow-lilac-700/30"
+                className="glass group flex items-center gap-4 rounded-2xl p-4 transition-[transform,box-shadow] duration-200 ease-fluid hover:-translate-y-1 hover:shadow-lg hover:shadow-lilac-700/30"
               >
                 <img
                   src={project.icon}
@@ -83,31 +84,34 @@ export default function Games() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div data-tilt data-skew>
-      <article className="surface flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-300 ease-fluid">
-        {/* Cover: gameplay art on a solid ground, icon overlapping */}
+      <article className="glass hover:glow flex h-full flex-col overflow-hidden rounded-3xl transition-shadow duration-300 ease-fluid">
+        {/* Cover: gameplay art fading into the card, icon overlapping */}
         <div
           data-curtain
-          className="group/cover relative h-44 overflow-hidden bg-night-700"
+          className={`group/cover relative h-44 overflow-hidden bg-linear-to-br ${project.gradient}`}
         >
-          {project.cover && (
+          {project.cover ? (
             <img
               src={project.cover}
               alt=""
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-fluid group-hover/cover:scale-110"
               loading="lazy"
             />
+          ) : (
+            <div className="grid-overlay absolute inset-0" />
           )}
+          <div className="absolute inset-0 bg-linear-to-t from-night-900 via-night-900/30 to-transparent" />
           <img
             src={project.icon}
             alt={`${project.title} icon`}
             className="absolute bottom-3 left-5 h-16 w-16 rounded-2xl shadow-xl shadow-black/60 ring-2 ring-white/20"
             loading="lazy"
           />
-          <span className="absolute top-4 left-4 rounded-full bg-night-950 px-3 py-1 text-xs font-semibold text-lilac-200">
+          <span className="glass absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-semibold text-lilac-200">
             {project.category}
           </span>
           {project.rating && (
-            <span className="absolute top-4 right-4 inline-flex bg-night-950 items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold text-amber-300">
+            <span className="glass absolute top-4 right-4 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold text-amber-300">
               <Star size={12} />
               <span className="sr-only">Rating</span>
               {project.rating}

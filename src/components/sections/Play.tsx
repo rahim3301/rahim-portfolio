@@ -13,6 +13,7 @@ const controls = [
 export default function Play() {
   return (
     <section id="play" className="relative scroll-mt-24 py-28">
+      <div className="blob top-[20%] right-[-10%] h-104 w-104 bg-blush/10" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -24,7 +25,7 @@ export default function Play() {
 
         <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:items-start">
           <Reveal className="flex flex-col gap-6">
-            <ul className="surface divide-y divide-lilac-400/10 rounded-3xl">
+            <ul className="glass divide-y divide-lilac-400/10 rounded-3xl">
               {controls.map((c) => (
                 <li key={c.keys} className="p-5">
                   <p className="font-display text-sm font-bold text-lilac-200">
@@ -35,7 +36,7 @@ export default function Play() {
               ))}
             </ul>
 
-            <div className="surface flex items-center gap-4 rounded-3xl p-5">
+            <div className="glass flex items-center gap-4 rounded-3xl p-5">
               <img
                 src={spotlightProject.icon}
                 alt=""

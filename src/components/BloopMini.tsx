@@ -9,7 +9,7 @@ const SPEED = 640;
 const MAX_BOUNCES = 4;
 const MIN_ANGLE = 0.15;
 const CANNON = { x: W / 2, y: H - 26 };
-const COLORS = ["#7f45c4", "#00e5ff", "#8af3ff", "#fbbf24", "#9d6ed8"];
+const COLORS = ["#d9443f", "#ff9a5c", "#ffc89a", "#fbbf24", "#e88a72"];
 const BEST_KEY = "bloop-mini-best";
 
 type Bloop = { x: number; y: number; baseY: number; r: number; vx: number; phase: number; color: string };
@@ -166,7 +166,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
   ctx.clearRect(0, 0, W, H);
 
-  ctx.strokeStyle = "rgba(157, 110, 216, 0.06)";
+  ctx.strokeStyle = "rgba(240, 165, 138, 0.06)";
   ctx.lineWidth = 1;
   for (let x = 0; x <= W; x += 40) {
     ctx.beginPath();
@@ -229,7 +229,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
       ctx.beginPath();
       ctx.arc(ex, ey, b.r * 0.26, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "#1b1622";
+      ctx.fillStyle = "#2c0c13";
       ctx.beginPath();
       ctx.arc(ex + Math.cos(look) * b.r * 0.1, ey + Math.sin(look) * b.r * 0.1, b.r * 0.13, 0, Math.PI * 2);
       ctx.fill();
@@ -246,7 +246,7 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.globalAlpha = 1;
 
   if (g.ball) {
-    ctx.shadowColor = "#9d6ed8";
+    ctx.shadowColor = "#e88a72";
     ctx.shadowBlur = 18;
     ctx.fillStyle = "#fff";
     ctx.beginPath();
@@ -258,13 +258,13 @@ function draw(g: Game, ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement)
   ctx.save();
   ctx.translate(CANNON.x, CANNON.y);
   ctx.rotate(g.angle);
-  ctx.fillStyle = "#7f45c4";
+  ctx.fillStyle = "#d9443f";
   ctx.beginPath();
   ctx.roundRect(0, -8, 42, 16, 8);
   ctx.fill();
   ctx.restore();
-  ctx.fillStyle = "#25063f";
-  ctx.strokeStyle = "#9d6ed8";
+  ctx.fillStyle = "#4a070c";
+  ctx.strokeStyle = "#e88a72";
   ctx.lineWidth = 3;
   ctx.beginPath();
   ctx.arc(CANNON.x, CANNON.y, 22, 0, Math.PI * 2);
@@ -394,7 +394,7 @@ export default function BloopMini() {
   const playing = hud.status === "playing" || hud.status === "cleared";
 
   return (
-    <div className="surface overflow-hidden rounded-3xl">
+    <div className="glass overflow-hidden rounded-3xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-lilac-400/10 px-5 py-3 text-sm">
         <div className="flex items-center gap-5">
           <span className="text-slate-400">
@@ -449,7 +449,7 @@ export default function BloopMini() {
         )}
 
         {(hud.status === "idle" || hud.status === "lost") && (
-          <div className="absolute inset-0 grid place-items-center bg-night-950/90 p-6 text-center">
+          <div className="absolute inset-0 grid place-items-center bg-night-950/70 p-6 text-center backdrop-blur-sm">
             <div>
               <p className="font-display text-2xl font-bold text-white md:text-3xl">
                 {hud.status === "idle" ? "Pop every Bloop" : "Out of shots!"}
@@ -462,7 +462,7 @@ export default function BloopMini() {
               <button
                 type="button"
                 onClick={start}
-                className="press mt-6 rounded-full bg-lilac-600 px-7 py-3 font-semibold text-white hover:bg-lilac-500"
+                className="press glow mt-6 rounded-full bg-lilac-600 px-7 py-3 font-semibold text-white hover:bg-lilac-500"
               >
                 {hud.status === "idle" ? "Play" : "Try again"}
               </button>

@@ -10,6 +10,7 @@ const showcased = new Set(ownGames.map((g) => g.playStoreUrl));
 export default function Studio() {
   return (
     <section id="studio" className="relative scroll-mt-24 py-28">
+      <div className="blob top-[15%] left-[-10%] h-104 w-104 bg-lilac-600/25" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -20,9 +21,9 @@ export default function Studio() {
         />
 
         <Reveal>
-          {/* Solid Royal Amethyst card to spotlight the studio */}
-          <div>
-            <div className="relative overflow-hidden rounded-[3rem] bg-lilac-800 p-10 text-white md:p-16">
+          {/* Rotating gradient border to spotlight the studio */}
+          <div className="animated-border shadow-2xl shadow-lilac-700/30">
+            <div className="relative overflow-hidden rounded-[3rem] bg-linear-to-br from-lilac-700 via-lilac-800 to-night-900 p-10 text-white md:p-16">
               {/* decorative rings */}
               <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full border-[3rem] border-white/5" />
               <div className="absolute -bottom-32 -left-16 h-80 w-80 rounded-full border-[3rem] border-white/5" />
@@ -32,10 +33,10 @@ export default function Studio() {
                   <img
                     src="/studio/logo.png"
                     alt="Offroad Interactive logo"
-                    className="h-20 w-20 rounded-2xl bg-white/10 object-contain p-2"
+                    className="h-20 w-20 rounded-2xl bg-white/10 object-contain p-2 backdrop-blur"
                   />
                   <div>
-                    <span className="inline-block rounded-full bg-white/15 px-4 py-1 text-xs font-semibold tracking-widest uppercase">
+                    <span className="inline-block rounded-full bg-white/15 px-4 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur">
                       {site.studio.role} · Founder
                     </span>
                     <h3 className="font-display mt-2 text-4xl font-bold md:text-6xl">
@@ -61,7 +62,7 @@ export default function Studio() {
                   ].map((stat) => (
                     <span
                       key={stat}
-                      className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold"
+                      className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold backdrop-blur"
                     >
                       {stat}
                     </span>
@@ -114,7 +115,7 @@ export default function Studio() {
                   </a>
                   <a
                     href="#contact"
-                    className="press rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white hover:bg-white/10"
+                    className="press rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white backdrop-blur hover:bg-white/10"
                   >
                     Partner With Us
                   </a>

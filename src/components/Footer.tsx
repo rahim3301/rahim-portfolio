@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="md:text-right">
           <a
             href="#home"
-            className="press surface inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-lilac-100 hover:text-white"
+            className="press glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-lilac-100 hover:text-white"
           >
             Back to top
             <ArrowUp />

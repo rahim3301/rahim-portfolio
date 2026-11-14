@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050505",
+  themeColor: "#14060a",
 };
 
 // Tells Google who this page is about.
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <div data-progress className="fixed inset-x-0 top-0 z-[100] h-1 origin-left scale-x-0 bg-blush" aria-hidden="true" />
+        <div data-progress className="fixed inset-x-0 top-0 z-[100] h-1 origin-left scale-x-0 bg-linear-to-r from-lilac-600 via-blush to-skysoft" aria-hidden="true" />
         <CustomCursor />
         <ClickBurst />
         <Navbar />

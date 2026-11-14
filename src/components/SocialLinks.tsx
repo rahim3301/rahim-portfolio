@@ -19,7 +19,7 @@ export default function SocialLinks({ compact = false }: { compact?: boolean }) 
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className={`press surface grid ${size} place-items-center text-slate-300 hover:border-lilac-300/50 hover:text-white`}
+            className={`press glass grid ${size} place-items-center text-slate-300 hover:border-lilac-300/50 hover:text-white`}
           >
             <Icon />
           </a>

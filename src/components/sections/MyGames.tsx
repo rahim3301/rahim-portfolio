@@ -11,7 +11,6 @@ const themes: Record<
     backdrop: React.ReactNode;
     badge: string;
     title: string;
-    titleStyle?: React.CSSProperties;
     hook: string;
     body: string;
     card: string;
@@ -22,12 +21,16 @@ const themes: Record<
   }
 > = {
   comic: {
-    panel: "bg-[#2f9be8]",
-    backdrop: null,
+    panel: "bg-linear-to-br from-sky-300 via-sky-500 to-blue-700",
+    backdrop: (
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{ backgroundImage: "radial-gradient(circle, #facc15 2px, transparent 2.5px)", backgroundSize: "18px 18px" }}
+      />
+    ),
     badge: "bg-red-500 text-white border-2 border-slate-900 -rotate-3",
-    title: "text-yellow-300",
-    titleStyle: { WebkitTextStroke: "2px #1e293b", textShadow: "4px 4px 0 #1e293b" },
-    hook: "text-white font-bold drop-shadow-[2px_2px_0_#1e293b]",
+    title: "text-[#0b1f3f]",
+    hook: "text-[#0b1f3f]/80 font-semibold",
     body: "text-slate-900",
     card: "border-[3px] border-slate-900 bg-white shadow-[6px_6px_0_#1e293b]",
     bullet: "bg-yellow-300 ring-1 ring-slate-900",
@@ -36,25 +39,46 @@ const themes: Record<
     bar: "bg-yellow-300",
   },
   neon: {
-    panel: "bg-[#1a0838]",
-    backdrop: null,
+    panel: "bg-linear-to-br from-[#2a1155] via-[#1a0b38] to-night-950",
+    backdrop: (
+      <>
+        <div
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #ffc89a 1px, transparent 1.5px), radial-gradient(circle, #ff9a5c 1px, transparent 1.5px)",
+            backgroundSize: "70px 70px, 110px 110px",
+            backgroundPosition: "0 0, 35px 50px",
+          }}
+        />
+        <div className="absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-blush/30 blur-3xl" />
+        <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-skysoft/20 blur-3xl" />
+      </>
+    ),
     badge: "bg-blush/20 text-blush border border-blush/50",
     title: "text-white",
-    titleStyle: { textShadow: "none" },
     hook: "text-skysoft font-bold tracking-wide uppercase",
     body: "text-lilac-100/90",
-    card: "border border-blush/30 bg-[#24104a]",
-    bullet: "bg-skysoft shadow-[0_0_8px_#8af3ff]",
+    card: "border border-skysoft/30 bg-black/35 backdrop-blur",
+    bullet: "bg-skysoft shadow-[0_0_8px_#ffc89a]",
     chip: "border border-skysoft/40 bg-black/30 text-skysoft",
-    cta: "bg-blush text-night-950 hover:bg-skysoft",
-    bar: "bg-blush",
+    cta: "bg-linear-to-r from-blush to-lilac-600 text-white shadow-[0_0_24px_rgba(255,154,92,0.55)] hover:brightness-110",
+    bar: "bg-linear-to-r from-blush to-skysoft",
   },
   cozy: {
-    panel: "bg-[#f8d5c4]",
-    backdrop: null,
+    panel: "bg-linear-to-br from-[#fde7d6] via-[#f9d0c0] to-[#f3b8a8]",
+    backdrop: (
+      <>
+        {/* soft quilt dots, like the game's patchwork rooms */}
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{ backgroundImage: "radial-gradient(circle, #fff7ef 3px, transparent 3.5px)", backgroundSize: "28px 28px" }}
+        />
+        <div className="absolute -top-24 left-1/3 h-80 w-80 rounded-full bg-white/50 blur-3xl" />
+      </>
+    ),
     badge: "bg-[#e86a5c] text-white rotate-2",
     title: "text-[#b93a2e]",
-    titleStyle: { textShadow: "0 3px 0 #fff4ea" },
     hook: "text-[#7a3f2c] font-bold",
     body: "text-[#5b3326]",
     card: "bg-[#fff8f1] ring-2 ring-[#f2c3ad] shadow-[0_10px_30px_rgba(150,80,60,0.18)]",
@@ -87,7 +111,7 @@ function GameScene({ game }: { game: OwnGame }) {
         <div className="flex items-center gap-5">
           <img src={game.icon} alt={`${game.title} icon`} className="h-16 w-16 shrink-0 rounded-2xl shadow-lg shadow-black/30 md:h-20 md:w-20" loading="lazy" />
           <div>
-            <h3 className={`font-display text-2xl leading-tight font-black sm:text-3xl md:text-5xl ${t.title}`} style={t.titleStyle}>
+            <h3 className={`font-display text-2xl leading-tight font-bold tracking-tight text-balance sm:text-3xl md:text-[2.75rem] ${t.title}`}>
               {game.title}
             </h3>
             <p className={`mt-1 text-base md:text-lg ${t.hook}`}>{game.hook}</p>

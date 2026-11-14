@@ -43,6 +43,7 @@ function CopyEmail() {
 export default function Contact() {
   return (
     <section id="contact" className="relative scroll-mt-24 py-28">
+      <div className="blob right-[-8%] bottom-[10%] h-104 w-104 bg-lilac-700/25" />
 
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
@@ -63,7 +64,7 @@ export default function Contact() {
               {site.availability}
             </p>
 
-            <ul className="surface divide-y divide-lilac-400/10 rounded-3xl">
+            <ul className="glass divide-y divide-lilac-400/10 rounded-3xl">
               <li className="flex items-center gap-4 p-5">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lilac-600/20 text-lilac-300">
                   <Mail size={20} />

@@ -6,27 +6,33 @@
 }
 
 @theme {
-  /* Royal Amethyst #3b0a6b (lilac-800) scale, on Jet Black #050505 (night-950), Electric Cyan #00e5ff accent (blush) */
-  --color-lilac-50: #f6f0fc;
-  --color-lilac-100: #ebdff8;
-  --color-lilac-200: #d9c4f2;
-  --color-lilac-300: #bb98e6;
-  --color-lilac-400: #9d6ed8;
-  --color-lilac-500: #7f45c4;
-  --color-lilac-600: #5f22a3;
-  --color-lilac-700: #4a1386;
-  --color-lilac-800: #3b0a6b;
-  --color-lilac-900: #25063f;
+  /* Crimson Ember: Deep Crimson Burgundy #790b13 (lilac-800), Warm Ivory Cream #fff0dc (lilac-50),
+     wine-black ground (night-950), ember orange accent (blush). Token names kept from the first palette. */
+  --color-lilac-50: #fff0dc;
+  --color-lilac-100: #fde3cc;
+  --color-lilac-200: #f6c9ad;
+  --color-lilac-300: #f3b49a;
+  --color-lilac-400: #e88a72;
+  --color-lilac-500: #d9443f;
+  --color-lilac-600: #c81d2a;
+  --color-lilac-700: #a3141f;
+  --color-lilac-800: #790b13;
+  --color-lilac-900: #4a070c;
+
+  /* Warm greys for body text on the wine ground (replace Tailwind's blue-tinted slate) */
+  --color-slate-300: #ecd9c8;
+  --color-slate-400: #c9ab9b;
+  --color-slate-500: #9b7d70;
 
   /* Dark base */
-  --color-night-950: #050505;
-  --color-night-900: #0b0a0d;
-  --color-night-800: #121016;
-  --color-night-700: #1b1622;
+  --color-night-950: #14060a;
+  --color-night-900: #1a080c;
+  --color-night-800: #22090f;
+  --color-night-700: #2c0c13;
 
-  /* Electric Cyan accent */
-  --color-blush: #00e5ff;
-  --color-skysoft: #8af3ff;
+  /* Ember accent */
+  --color-blush: #ff9a5c;
+  --color-skysoft: #ffc89a;
 
   /* Strong custom curves — built-in easings lack punch */
   --ease-fluid: cubic-bezier(0.23, 1, 0.32, 1);
@@ -82,7 +88,7 @@ body {
 
 /* Visible focus for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #7f45c4;
+  outline: 2px solid #d9443f;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -92,6 +98,8 @@ body {
   html {
     scroll-behavior: auto;
   }
+  .animate-marquee,
+  .animated-border,
   .animate-pulse {
     animation: none;
   }
@@ -156,14 +164,47 @@ body {
   }
 }
 
-/* Solid raised surface: one step up from the page, hairline border */
-.surface {
-  background: var(--color-night-800);
-  border: 1px solid rgba(157, 110, 216, 0.16);
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(110deg, #ff4d4f 0%, #ff7a52 45%, #ffb36b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
+/* Dark frosted glass surface */
+.glass {
+  background: rgba(200, 29, 42, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(240, 165, 138, 0.18);
+}
 
+/* Purple glow */
+.glow {
+  box-shadow:
+    0 0 24px rgba(200, 29, 42, 0.35),
+    0 0 80px rgba(200, 29, 42, 0.12);
+}
 
+/* Soft glowing blob backgrounds (pure CSS, used behind sections) */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  /* own GPU layer so the big blur isn't repainted while scrolling */
+  transform: translateZ(0);
+}
+
+/* Subtle grid overlay for a techy feel */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(240, 165, 138, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 165, 138, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
 
 /* Gentle idle float for hero artwork */
 @keyframes float {
@@ -184,6 +225,46 @@ body {
   .animate-float {
     animation: none;
   }
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Rotating conic-gradient border (used to spotlight the studio card) */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animated-border {
+  border-radius: 3.1rem;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle),
+    rgba(200, 29, 42, 0.9),
+    rgba(255, 154, 92, 0.55),
+    rgba(255, 200, 154, 0.45),
+    rgba(200, 29, 42, 0.9)
+  );
+  animation: rotate-angle 6s linear infinite;
 }
 
 /* First-load entrances (CSS, so they run before any script) */
